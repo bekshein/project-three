@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     render '/welcome'
   end
 
+  def angular
+    render '/angular_partial', layout: 'angular'
+  end
+
   private
 
   def current_user

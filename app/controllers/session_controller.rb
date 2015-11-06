@@ -16,7 +16,7 @@ class SessionController < ApplicationController
     flash[:message] = "Email / Password combo does not exist"
   end
 
-  redirect_to root_path
+  redirect_to application_angular_path
   end
 
   def destroy
