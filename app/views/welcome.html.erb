@@ -1,0 +1,40 @@
+<% if flash[:message] %>
+  <div class="alert">
+    <%= flash[:message] %>
+  </div>
+<% end %>
+
+<h1> Welcome to vibez </h1>
+
+<h3>Please log in</h3>
+
+<form action="<%= session_path %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+
+  <input type="email" name="user[email]" placeholder="your email address"> </br>
+  <input type="password" name="user[password]" placeholder="desired password"> </br>
+  <input type="submit" value="Log in">
+</form>
+
+
+<h3>Please sign up</h3>
+
+<form action="<%= users_path %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="username" name="user[username]" placeholder="pick a username"> </br>
+  <input type="email" name="user[email]" placeholder="your email address">
+  </br>
+  <input type="password" name="user[password]" placeholder="desired password"> </br>
+  <input type="submit" value="Sign up">
+</form>
+
+<% if current_user %>
+<hr/>
+<form action="<%= session_path %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Log Out!">
+</form>
+<% end %>
