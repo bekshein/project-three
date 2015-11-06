@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
-  get 'application/angular'
-  # gets to main app 
+  get 'application/dashboard'  
+  # gets to main app
 
   resources :posts
   resources :users

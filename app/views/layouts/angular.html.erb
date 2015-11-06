@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" charset="utf-8"></script>
   </head>
+  <base href="/application/angular">
   <body>
     <%= yield %>
     <%= javascript_include_tag 'angular', 'data-turbolinks-track' => true %>

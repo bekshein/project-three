@@ -1,4 +1,4 @@
-var app = angular.module('VibezApp', []);
+var app = angular.module('VibezApp', ['ngRoute']);
 
 //Header Controller
 app.controller('HeaderController', ['$htpp', function($http){
@@ -9,4 +9,4 @@ app.controller('HeaderController', ['$htpp', function($http){
     // data comes back like {current_user:{email: 'sdfasdf'}}
     controller.current_user = data.current_user;
   })
-}]);
+}]); // end of controller1

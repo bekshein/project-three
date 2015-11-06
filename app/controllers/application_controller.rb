@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
     render '/welcome'
   end
 
-  def angular
-    render '/angular_partial', layout: 'angular'
+  def dashboard
+    render '/angular_partials/dashboard', layout: 'angular'
   end
 
   private
