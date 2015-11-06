@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+var arr = angular.module('myApp', []);
+app.controller('UserController', function() {
+	this.name = 'Matt';
+	this. showValue = true;
+	this.hideForm = false;
+	this.favoriteColors = ['blue', 'black', 'red'];
+	this.changeName = function(name) {
+		this.name = name;
+		console.log(this);
+	};
+	this.submitForm = function() {
+		this.hideForm = true;
+	}
+});åå
