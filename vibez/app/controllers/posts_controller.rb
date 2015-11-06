@@ -10,9 +10,9 @@ class PostsController < ApplicationController
 	def new
 		@post = Post.new
 		@moods = ['happy', 'good', 'euphoric', 'ecstasy', 'so so']
-		@users = User.all.map do |x|
+		@users = User.all.map do |x| 
 			[ x.username, x.id ]
-		end
+		end	
 	end
 
 	def create
@@ -24,9 +24,9 @@ class PostsController < ApplicationController
 	def edit
 		@post = Post.find(params[:id])
 		@moods = ['happy', 'good', 'euphoric', 'ecstasy', 'so so']
-		@users = User.all.map do |x|
+		@users = User.all.map do |x| 
 			[ x.username, x.id ]
-		end
+		end	
 	end
 
 	def update
@@ -53,3 +53,4 @@ class PostsController < ApplicationController
 			.permit(:song_title, :artist_name, :vibe, :like, :user_id)
 	end
 end
+
