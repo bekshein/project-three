@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
-  get 'application/dashboard'  
+  get 'application/angular'
   # gets to main app
 
-  resources :posts
+  resources :posts, only: [:index, :create], defaults: {format: :json}
   resources :users
 
   # session stuff

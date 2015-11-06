@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
 
   helper_method :current_user
 
@@ -9,8 +8,8 @@ class ApplicationController < ActionController::Base
     render '/welcome'
   end
 
-  def dashboard
-    render '/angular_partials/dashboard', layout: 'angular'
+  def angular
+    render '/angular', layout: 'angular'
   end
 
   private
@@ -35,4 +34,5 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless logged_in?
   end
 
+  protect_from_forgery with: :exception
 end

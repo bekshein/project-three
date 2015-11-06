@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
     minimum: 4, allow_nil: true
   }
 
-
+  has_many :posts, dependent: :destroy
 end
