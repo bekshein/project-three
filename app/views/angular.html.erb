@@ -1,25 +1,14 @@
-<main ng-controller="Controller as ctrl">
+<main ng-controller="HeaderController as ctrl">
 
   <%= render partial: 'layouts/header' %>
 
-  <h2> Moodboard </h2>
-
+<header ng-controller="HeaderController as header">
+  <h2> Welcome to your vibezboard </h2>
+{{header.foo}}
   <%= render partial: 'layouts/nav' %>
 
-  <ul class="moods">
-    <li>sad</li>
-    <li>blue</li>
-    <li>happy I guess?</li>
-    <li>f u world</li>
-  </ul>
+</header>
 
-
-  <!-- <h2>Submit a new article</h2>
-  <form ng-submit="ctrl.createArticle()">
-    <input type="text" ng-model="ctrl.newArticleTitle" placeholder="Title">
-    <textarea ng-model="ctrl.newArticleBody" placeholder="Text.."></textarea>
-    <input type="submit" value="Submit Article"/>
-  </form> -->
-
+<main ng-view>
 
 </main>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # gets to main app
 
   resources :posts, only: [:index, :create], defaults: {format: :json}
-  resources :users
+  resources :users, defaults: {format: :json}
 
   # session stuff
   get '/session' => 'session#current_user', defaults: { format: :json }
