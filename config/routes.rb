@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'application/angular'
   # gets to main app
 
-  resources :posts, only: [:index, :create], defaults: {format: :json}
+  resources :posts, only: [:index, :create, :new]
   resources :users, defaults: {format: :json}
 
   # session stuff

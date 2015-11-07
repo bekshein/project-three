@@ -1,5 +1,7 @@
-<header>
-  <div class="logo">
-    <h1>vibez</h1>
-  </div>
+<header ng-controller="HeaderController as header">
+    <div class="logo">
+      <h1>vibez</h1>
+    </div>
+    <h2> Nice to see you again, {{header.current_user.username}}. </h2>
+    <%= render partial: 'layouts/nav' %>
 </header>
