@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
-  get 'application/angular'
-  # gets to main app
+  get 'application/vibezboard'
+  # gets to overview
 
-  resources :posts, only: [:index, :create, :new]
+  get 'application/profile'
+  # gets to profile page
+
+  get 'application/newpost'
+  # gets to new post
+
+  resources :posts, only: [:index, :create, :new], defaults: { format: :json}
   resources :users, defaults: {format: :json}
 
   # session stuff

@@ -4,7 +4,7 @@ app.controller('HeaderController', ['$http', function($http) {
   var _this = this;
   $http.get('/session').success(function(data){
     _this.current_user = data.current_user;
-    console.log(_this.current_user)
+    // console.log(_this.current_user)
   })
 }]);
 
@@ -15,6 +15,17 @@ app.controller('PostsController', ['$http', function($http){
 
   this.VIBE_TYPES  = ['sad', 'cool', 'chill', 'happy']
   this.newPostVibe = 'sad';
+
+  //get posts data and add it to the controller
+  this.getPosts = function(){
+    // get posts for current user
+    $http.get('/posts').success(function(data){
+     _this.posts = data.posts;
+     console.log(data)
+    });
+  } // end of getPosts function
+  this.getPosts()
+
   //make a post
   $http.post('/posts', {
     //include authenticity_token
@@ -23,7 +34,8 @@ app.controller('PostsController', ['$http', function($http){
     post: {
       song_title:  this.newPostTitle,
       artist_name: this.newArtistName,
-      vibe:        this.newVibe
+      vibe:        this.newVibe,
+      like:        this.newLike
     }
   }).success(function(data){
     _this.current_user_posts.push(data.post);

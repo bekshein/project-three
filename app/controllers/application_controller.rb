@@ -8,9 +8,18 @@ class ApplicationController < ActionController::Base
     render '/welcome'
   end
 
-  def angular
-    render '/angular', layout: 'angular'
+  def vibezboard
+    render '/vibezboard', layout: 'angular'
   end
+
+  def profile
+    render '/profile', layout: 'angular'
+  end
+
+  def newpost
+    render '/newpost', layout: 'angular'
+  end
+
 
   private
 
