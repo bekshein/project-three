@@ -1,0 +1,14 @@
+<% provide(:title, @user.username) %>
+<div>
+  <section>
+    <h1>
+      <%= @user.username %>
+    </h1>
+  </section>
+  <section class="stats">
+    <%= render 'shared/stats' %>
+  </section>
+</div>
+<div>
+  <%= render 'follow_form' if logged_in? %>
+</div>
