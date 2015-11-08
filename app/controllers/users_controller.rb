@@ -23,6 +23,30 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:message] = "Update has been saved!"
+    else
+      flash[:message] = @user.errors.full_messages.to_sentence
+    end
+
+    redirect_to @user
+  end
+
+  def destroy
+    @user = User.destroy(params[:id])
+    flash[:success] = "User deleted!"
+    redirect_to users_path
+  end
+
+private
+
   def user_params
     return params.require(:user).permit(:username, :email, :password)
   end
