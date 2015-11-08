@@ -6,17 +6,17 @@ class SessionController < ApplicationController
     if user && user.authenticate(user_params[:password])
       # session[:current_user_id] = user.id
 
-    token = SecureRandom.urlsafe_base64
+      token = SecureRandom.urlsafe_base64
 
-    session[:session_token] = token
-    user.update(session_token: token)
+      session[:session_token] = token
+      user.update(session_token: token)
 
-    flash[:message] = "Thanks for logging in"
-  else
-    flash[:message] = "Email / Password combo does not exist"
-  end
+      flash[:message] = "Thanks for logging in"
+    else
+      flash[:message] = "Email / Password combo does not exist"
+    end
 
-  redirect_to root_path
+    redirect_to root_path
   end
 
   def destroy
@@ -26,6 +26,8 @@ class SessionController < ApplicationController
 
      redirect_to root_path
   end
+
+  private
 
   def user_params
     return params.require(:user).permit(:email, :password)
