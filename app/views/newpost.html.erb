@@ -6,7 +6,15 @@
     value="<%= form_authenticity_token %>">
   <input type="text" name="post[song_title]" placeholder= "song title"></br>
   <input type="text" name="post[artist_name]" placeholder="artist name"></br>
-  <input type="text" name="post[vibe]" placeholder="vibe"></br>
-  <input type="text" name="post[like]" placeholder="like"></br>
+  <select name="post[vibe]">
+    <option value="sad">Sad</option>
+    <option value="cool">Cool</option>
+    <option value="happy">Happy</option>
+    <option value="angry">Angry</option>
+  </select>
+  </br>
+  <select name="post[vibe]">
+    <option value="1">1</option>
+  </select></br>
   <input type="submit" value="submit new post">
 </form>

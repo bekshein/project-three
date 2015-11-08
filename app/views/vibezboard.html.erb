@@ -1,2 +1,26 @@
 <%= render partial: 'layouts/header' %>
 <h3> Welcome to the vibez board </h3>
+
+
+<main ng-controller="PostsController as posts">
+
+
+<label for="sad">Sad</label>
+<input ng-model="search.$" value="sad "type="checkbox" id="sad" >
+<label for="cool">Cool</label>
+<input ng-click="search.$" type="checkbox" id="cool" value="cool">
+<label for="happy">Happy</label>
+<input ng-click="search.$" type="checkbox" id="happy" value="happy">
+
+
+
+    <!-- <select ng-model="search.$">
+      <option value="sad">Sad</option>
+      <option value="cool">Cool</option>
+      <option value="happy">Happy</option>
+      <option value="angry">Angry</option>
+    </select> -->
+    <ul ng-repeat="post in posts.posts | filter:search:strict ">
+      <li>{{post.song_title}}</li>
+    </ul>
+</main>

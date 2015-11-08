@@ -28,13 +28,3 @@
   <input type="password" name="user[password]" placeholder="desired password"> </br>
   <input type="submit" value="Sign up">
 </form>
-
-<% if current_user %>
-<hr/>
-<form action="<%= session_path %>" method="POST">
-  <input type="hidden" name="authenticity_token"
-    value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Log Out!">
-</form>
-<% end %>
