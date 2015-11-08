@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  # prevents unauthorized access unless logged in, commenting out until done with testing
+  # before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
+
   def index
     @users = User.all
   end
@@ -49,5 +52,13 @@ private
 
   def user_params
     return params.require(:user).permit(:username, :email, :password)
+  end
+
+  # confirms a user is logged in
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to root_path
+    end
   end
 end
