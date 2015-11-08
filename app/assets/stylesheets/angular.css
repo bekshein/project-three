@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Partial styling */
+
+main {
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  clear: both;
+}
+
+nav ul {
+  margin: 3% auto 3% auto;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  background-color: steelblue;
+  border-radius: 5px;
+  padding: 1%;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover {
+  opacity: 0.5;
+}
+
+
+.message {
+  display: inline;
+  float: left;
+}
+
+.logout {
+  float: right;
+  padding-left: 3%;
+}
+
+.logout-label:hover {
+  opacity: 0.5;
+}
+
+/* titles */
+
+h3 {
+  margin: 3%;
+}
+
+h4 {
+  margin: 3%;
+}
+
+.vibe-select {
+  margin: 2%;
+}
