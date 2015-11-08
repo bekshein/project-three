@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
 
   # session stuff
-  get '/session' => 'session#current_sinner', defaults: { format: :json }
+  get '/session' => 'session#current_user', defaults: { format: :json }
   post '/session' => 'session#create'
   delete '/session' => 'session#destroy'
 
