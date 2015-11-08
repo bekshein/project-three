@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new(post_params)
 	  @post.save
-	  redirect_to posts_path
+	  redirect_to application_profile_path
 	end
 
 	def edit

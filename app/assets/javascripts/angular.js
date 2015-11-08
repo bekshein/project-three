@@ -26,19 +26,5 @@ app.controller('PostsController', ['$http', function($http){
   } // end of getPosts function
   this.getPosts()
 
-  //make a post
-  $http.post('/posts', {
-    //include authenticity_token
-      authenticity_token: authenticity_token,
-    //values from form
-    post: {
-      song_title:  this.newPostTitle,
-      artist_name: this.newArtistName,
-      vibe:        this.newVibe,
-      like:        this.newLike
-    }
-  }).success(function(data){
-    _this.current_user_posts.push(data.post);
-  });
 
 }]);

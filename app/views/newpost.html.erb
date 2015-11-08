@@ -2,7 +2,11 @@
 
 <h3>Create a new post </h3>
 <form class="new-post" action="<%= posts_path %>" method="post">
-  <input type="text" name="post[song_title]" placeholder= "song title">
-  <input type="text" name="post[artist_name]" placeholder="artist name">
-  <input type="text" name="post[vibe]" placeholder="vibe">
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type="text" name="post[song_title]" placeholder= "song title"></br>
+  <input type="text" name="post[artist_name]" placeholder="artist name"></br>
+  <input type="text" name="post[vibe]" placeholder="vibe"></br>
+  <input type="text" name="post[like]" placeholder="like"></br>
+  <input type="submit" value="submit new post">
 </form>
