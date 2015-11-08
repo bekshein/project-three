@@ -1,0 +1,17 @@
+<div>
+  <section>
+    <h1><%= @user.username %></h1>
+    <span><%= link_to "view my profile", @user %></span>
+  </section>
+  <section>
+    <%= render 'shared/stats' %>
+  </section>
+</div>
+<div>
+  <h3><%= @title %></h3>
+  <% if @users.any? %>
+    <ul>
+      <%= render @users %>
+    </ul>
+  <% end %>
+</div>
