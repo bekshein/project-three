@@ -10,13 +10,47 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/* welcome page */
+/* welcome page | logo */
+
+.logo {
+  margin: 10%;
+}
+
+.ball {
+  transform-origin: 200% center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: deeppink;
+  position: relative;
+  animation: orbit 3s linear infinite;
+}
+
+.ball:before {
+  content: '';
+  height: 10px;
+  width: 10px;
+  border-radius: 50px;
+  background-color: deeppink;
+  position: relative;
+  animation: orbit 3s linear reverse infinite;
+}
+
+
+@keyframes orbit {
+  100% {transform: rotate(-360deg); }
+}
+
+/* welcome page | login */
 
 .login {
-  background-color: red;
+  border: 1px black solid;
   padding: 3%;
   width: 50%;
-  margin: 0 auto;
+  position: relative;
+  top: 40px;
+  left: 30%;
+  overflow: hidden;
 }
 
 h3 {
@@ -28,13 +62,24 @@ h3 {
 
 input {
   margin-bottom: 5%;
-  font-size: 1em;
+  font-size: 0.5em;
   padding: 2%;
   width: 90%;
 }
 
 .login-submit {
-  font-size: 1.5em;
+  font-size: 1em;
+  background-color: white;
+  color: black;
+  display: block;
+  padding: 2%;
+  width: 90%;
+  text-align: center;
+  box-shadow: 2px 0px 10px #888888;
+}
+
+.login-submit:hover {
+  box-shadow: 2px 0px 20px #888888;
 }
 
 .signup {

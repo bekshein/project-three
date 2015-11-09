@@ -4,17 +4,20 @@
   </div>
 <% end %>
 
-<%= render partial: 'layouts/header' %>
+<div class="logo">
+  <h1>vibez</h1>
+  <div class="ball"></div>
+</div>
 
 <div class="login">
-<h3>Login</h3>
+<h3><span class="login-title">Login </span> | <span class="signup-title"> Sign up</span></h3>
 <form action="<%= session_path %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
 
   <input type="email" name="user[email]" placeholder="your email address"> </br>
   <input type="password" name="user[password]" placeholder="desired password"> </br>
-  <label for="login-submit">log in</label>
-  <input type="submit" id="login-submit" value="Log in">
+  <label for="login-submit" class="login-submit">log in</label>
+  <input type="submit" id="login-submit" value="Log in" hidden>
 </form>
 </div>
 
