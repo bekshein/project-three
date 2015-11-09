@@ -1,3 +1,5 @@
+/* general code */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +10,8 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/* Partial styling */
+
+/* Layout Partials */
 
 main {
   text-align: center;
@@ -47,7 +50,7 @@ nav a:hover {
   float: left;
 }
 
-.logout {
+.logout-button {
   float: right;
   padding-left: 3%;
 }

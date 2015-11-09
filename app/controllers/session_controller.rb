@@ -12,11 +12,13 @@ class SessionController < ApplicationController
     user.update(session_token: token)
 
     flash[:message] = "Thanks for logging in"
+    redirect_to application_vibezboard_path
   else
     flash[:message] = "Email / Password combo does not exist"
+    redirect_to root_path
   end
 
-  redirect_to application_vibezboard_path
+
   end
 
   def destroy

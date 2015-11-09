@@ -1,12 +1,12 @@
 <header ng-controller="HeaderController as header">
 
     <% if current_user %>
-    <form class="logout" action="<%= session_path %>" method="POST">
+    <form class="logout-button" action="<%= session_path %>" method="POST">
       <input type="hidden" name="authenticity_token"
         value="<%= form_authenticity_token %>">
       <input type="hidden" name="_method" value="DELETE">
-      <label for="logout" class="logout-label">Log out</label>
-      <input id="logout" type="submit" value="Log Out!" hidden>
+      <label for="logout-button" class="logout-label">Log out</label>
+      <input id="logout-button" type="submit" value="Log Out!" hidden>
     </form>
       <p class="message"> Nice to see you again, {{header.current_user.username}}. </p>
 

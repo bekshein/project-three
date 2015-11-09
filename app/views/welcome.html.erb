@@ -6,19 +6,20 @@
 
 <%= render partial: 'layouts/header' %>
 
-<h3>Please log in</h3>
-
+<div class="login">
+<h3>Login</h3>
 <form action="<%= session_path %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
 
   <input type="email" name="user[email]" placeholder="your email address"> </br>
   <input type="password" name="user[password]" placeholder="desired password"> </br>
-  <input type="submit" value="Log in">
+  <label for="login-submit">log in</label>
+  <input type="submit" id="login-submit" value="Log in">
 </form>
+</div>
 
-
+<div class="signup">
 <h3>Please sign up</h3>
-
 <form action="<%= users_path %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
@@ -28,3 +29,4 @@
   <input type="password" name="user[password]" placeholder="desired password"> </br>
   <input type="submit" value="Sign up">
 </form>
+</div>
