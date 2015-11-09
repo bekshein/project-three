@@ -8,10 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-  end
+    @posts = @user.posts 
 
-  def new
-    @user = User.new
+    render '/profile', layout: 'angular'
   end
 
   def create
@@ -44,7 +43,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.destroy(params[:id])
-    flash[:success] = "User deleted!"
+    flash[:message] = "User deleted!"
     redirect_to users_path
   end
 
@@ -72,7 +71,7 @@ private
   # confirms a user is logged in
   def logged_in_user
     unless logged_in?
-      flash[:danger] = "Please log in."
+      flash[:message] = "Please log in."
       redirect_to root_path
     end
   end
