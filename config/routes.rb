@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :create, :new], defaults: { format: :json }
 
   # member method sets routes to users/:id/following or users/:id/followers
-  resources :users do
+  resources :users, defaults: { format: :json } do
     member do
       get :following, :followers
     end
-  end, defaults: { format: :json }
+  end
 
   # used for follow and unfollow
   resources :relationships, only: [:create, :destroy]
