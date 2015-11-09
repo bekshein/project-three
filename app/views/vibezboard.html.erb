@@ -1,0 +1,16 @@
+<%= render partial: 'layouts/header' %>
+<h3> Welcome to the vibez board </h3>
+
+
+<main ng-controller="PostsController as posts">
+  <label for="">Choose your vibe:</label>
+    <select class="vibe-select" ng-model="search.$">
+      <option value="sad">Sad</option>
+      <option value="cool">Cool</option>
+      <option value="happy">Happy</option>
+      <option value="angry">Angry</option>
+    </select>
+    <ul ng-repeat="post in posts.posts | filter:search:strict ">
+      <li>{{post.song_title}}</li>
+    </ul>
+</main>

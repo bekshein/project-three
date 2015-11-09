@@ -1,17 +1,26 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
-  resources :posts
+  get 'application/vibezboard'
+  # gets to overview
 
-  # used for follow and unfollow
-  resources :relationships, only: [:create, :destroy]
+  get 'application/profile'
+  # gets to profile page
+
+  get 'application/newpost'
+  # gets to new post
+
+  resources :posts, only: [:index, :create, :new], defaults: { format: :json }
 
   # member method sets routes to users/:id/following or users/:id/followers
   resources :users do
     member do
       get :following, :followers
     end
-  end
+  end, defaults: { format: :json }
+
+  # used for follow and unfollow
+  resources :relationships, only: [:create, :destroy]
 
   # session stuff
   get '/session' => 'session#current_user', defaults: { format: :json }

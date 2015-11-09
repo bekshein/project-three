@@ -13,12 +13,14 @@ class PostsController < ApplicationController
 		@users = User.all.map do |x|
 			[ x.username, x.id ]
 		end
+
+		render '/newpost', layout: 'angular'
 	end
 
 	def create
 		@post = Post.new(post_params)
 	  @post.save
-	  redirect_to posts_path
+	  redirect_to application_profile_path
 	end
 
 	def edit

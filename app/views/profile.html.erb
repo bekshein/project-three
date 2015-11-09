@@ -1,0 +1,13 @@
+<%= render partial: 'layouts/header' %>
+<h3> Welcome to your profile </h3>
+
+<main ng-controller="PostsController as posts">
+<h4> See all of your posts below</h4>
+<ul>
+  <li ng-repeat="post in posts.posts">
+    <p>{{post.artist_name}}</p>
+    <p>{{post.song_title}}</p>
+  </li>
+</ul>
+
+</main>
