@@ -36,37 +36,37 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode({ enabled: true });
   $routeProvider.
     when('/', {
-      templateUrl: 'angular_templates/login.html.erb',
+      templateUrl: 'angular_templates/login.html',
       controller: 'HeaderController',
       controllerAs: 'ctrl'
     }).
      when('/signup', {
-       templateUrl: 'angular_templates/signup.html.erb',
+       templateUrl: 'angular_templates/signup.html',
        controller: 'HeaderController',
        controllerAs: 'ctrl'
      }).
      when('/application/feed', {
-       templateUrl: 'angular_templates/vboard.html.erb',
+       templateUrl: 'angular_templates/vboard.html',
        controller: 'PostsController',
        controllerAs: 'pctrl'
      }).
      when('/application/profile', {
-       templateUrl: 'angular_templates/profile.html.erb',
+       templateUrl: 'angular_templates/profile.html',
        controller: 'PostsController',
        controllerAs: 'pctrl'
      }).
      when('/application/newpost', {
-       templateUrl: 'angular_templates/new.html.erb',
+       templateUrl: 'angular_templates/new.html',
        controller: 'PostsController',
        controllerAs: 'pctrl'
      }).
      when('/application/following', {
-       templateUrl: 'angular_templates/following.html.erb',
+       templateUrl: 'angular_templates/following.html',
        controller: 'PostsController',
        controllerAs: 'pctrl'
      }).
      when('/application/followers', {
-       templateUrl: 'angular_templates/followers.html.erb',
+       templateUrl: 'angular_templates/followers.html',
        controller: 'PostsController',
        controllerAs: 'pctrl'
      });
