@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :song_title, null: false
       t.string :artist_name, null: false
       t.string :vibe, null: false
-      t.integer :like, null: false
+      t.integer :like
 
       t.references :user, index:true, foreign_key: true
 
