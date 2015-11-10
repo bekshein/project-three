@@ -69,7 +69,26 @@ app.controller('PostsController', ['$http', function($http){
      console.log(_this.posts)
     });
   } // end of getPosts function
+
+  this.getFollowers = function(){
+    $http.get('/users/1/followers').success(function(data){
+      _this.followers = data.followers.users;
+      // controller.current_user_followers = data.followers;
+    });
+  } // end of getFollowers function
+
+  this.getFollowing = function(){
+    $http.get('/users/1/following').success(function(data){
+      console.log(data);
+      _this.following = data.following.users;
+      // controller.current_user_followers = data.followers;
+    });
+  } // end of getFollowers function
+
+
   this.getPosts()
+  this.getFollowers();
+  this.getFollowing();
 }]); // end of PostsController
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){

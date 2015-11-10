@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     @title = "Following"
     @user = User.find(params[:id])
     @users = @user.following
-    render 'followings'
+    render 'following'
   end
 
   def followers
