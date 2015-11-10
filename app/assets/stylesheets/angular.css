@@ -100,3 +100,13 @@ h4 {
 .vibe-select {
   margin: 2%;
 }
+
+/* pseudo shapes */
+
+#example:before {
+  content: "#"
+}
+
+#example:after {
+  content: "."
+}
