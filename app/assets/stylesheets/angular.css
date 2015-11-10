@@ -56,6 +56,10 @@ nav a:hover {
   cursor: pointer;
 }
 
+nav a:active {
+  opacity: 0.3;
+}
+
 .active-nav {
   color: deeppink;
 }
@@ -63,6 +67,11 @@ nav a:hover {
 .message {
   font-size: 0.5em;
   color: deeppink;
+  font-style: italic;
+}
+
+.message-username {
+  font-weight: 900;
 }
 
 .logout-button {
