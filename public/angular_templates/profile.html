@@ -12,8 +12,8 @@
 <div class="board">
     <h3>This V-Board belongs to {{pctrl.current_user}}</h3>
     <div class="post" ng-repeat="post in pctrl.posts">
+      <p class="vibe">{{post.vibe}}</p>
       <p>{{post.artist_name}}</p>
       <p>{{post.song_title}}</p>
-      <p>Vibe: {{post.vibe}}</p>
     </div>
 </div>
