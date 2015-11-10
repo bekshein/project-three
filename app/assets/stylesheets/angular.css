@@ -103,10 +103,43 @@ h4 {
 
 /* pseudo shapes */
 
+#example {
+  position: relative;
+  padding: 3%;
+  height: 100%;
+  width: 70%;
+  margin: 5% auto 5% auto;
+  border-left: 3px solid deeppink;
+  border-right: 3px solid deeppink;
+}
+
+#example:before,
+#example:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  border-width: 3px;
+  width: 100%;
+  display: block;
+  border-style: solid;
+  border-color: transparent;
+}
+
 #example:before {
-  content: "#"
+  border-top-width: 0;
+  border-bottom-color: deeppink;
+  top: -3px;
+  left: -3px;
 }
 
 #example:after {
-  content: "."
+  border-bottom-width: 0;
+  border-top-color: deeppink;
+  bottom: -3px;
+  left: -3px;
+}
+
+#example p {
+  font-size: 0.5em;
+  text-align: left;
 }
