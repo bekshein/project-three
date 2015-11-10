@@ -17,9 +17,12 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:message] = "You are now a registered user!"
+      redirect_to application_feed_path
     else
       flash[:message] = @user.errors.full_messages.to_sentence
+      redirect_to root_path
     end
+
   end
 
   def edit
