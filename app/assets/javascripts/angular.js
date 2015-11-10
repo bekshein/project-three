@@ -12,6 +12,46 @@ app.controller('HeaderController', ['$http', function($http) {
   })
 }]);
 
+app.controller('UserController', ['$http', function($http){
+  var controller = this;
+  //this fetches posts data and adds it to controller
+  this.getPosts = function(){
+    // get posts for current User
+    $http.get('/posts').success(function(data){
+      controller.current_user_posts = data.posts;
+    });
+  };
+
+  this.updateUser = function(user){
+    $http.patch('/users/' + user.id).success(function(data){
+      controller.current_user = data.user;
+    });
+  };
+
+  this.destroyUser = function(user){
+    $http.delete('/users/' + user.id).success(function(data) {
+
+    })
+  }
+  this.getPosts();
+}]);
+
+app.controller('FollowController', ['$http', function($http){
+  var controller = this;
+
+  this.getFollowers = function(){
+    $http.get('/users/'+ user.id +'/followers').success(function(data){
+      // controller.current_user_followers = data.followers;
+    });
+  }
+
+  this.getFollowing = function(){
+    $http.get('/users/' + user.id + '/following').success(function(data){
+      // controller.current_user_following = data.following;
+    });
+  }
+}])
+
 app.controller('PostsController', ['$http', function($http){
   //get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

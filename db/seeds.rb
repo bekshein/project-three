@@ -10,15 +10,15 @@
 # Faker for Users
 User.create!(username: "foobs",
              email: "foo@bar.com",
-             password_digest: "foobar")
+             password: "foobar")
 
 99.times do |n|
   username = Faker::Internet.user_name
   email = Faker::Internet.free_email
-  password_digest = Faker::Internet.password(4)
+  password = Faker::Internet.password(4)
   User.create!(username:  username,
                email: email,
-               password_digest: password_digest)
+               password: password)
  end
 
 # Faker for following relationships
