@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # prevents unauthorized access unless logged in, commenting out until done with testing
   # before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
+  # before_action :correct_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts 
+    @posts = @user.posts
 
     render '/profile', layout: 'angular'
   end
@@ -75,4 +76,11 @@ private
       redirect_to root_path
     end
   end
+
+  # confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
 end
