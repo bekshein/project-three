@@ -8,4 +8,11 @@
   </ul>
 </nav>
 
-followers is still empty
+
+<h3>Followers: {{ pctrl.followers.length }}</h3>
+<ul>
+  <li ng-repeat="follower in pctrl.followers">
+    <p><a ng-href="users/{{follower.id}}">{{follower.username}}</a></p>
+    <p>{{follower.email}}</p>
+  </li>
+</ul>

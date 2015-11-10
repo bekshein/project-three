@@ -1,8 +1,23 @@
 var app = angular.module('VibezApp', ['ngRoute']);
 
-app.controller('HeaderController', ['$http', function($http) {
-    //get authenticity_token from DOM (rails injects it on load)
-    var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+// Main Controller to access everything
+app.controller('ParentController', ['$http', '$scope',
+function ($http, $scope) {
+  $scope.authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  $scope.aut                = $scope.authenticity_token;
+
+  var _this = this;
+
+  $http.get('/session').success(function(data){
+    $scope.current_user = data.current_user;
+  });
+}]);
+
+app.controller('HeaderController', ['$http', '$scope', function($http, $scope) {
+
+    // get authenticity_token from DOM (rails injects it on load)
+  var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
   this.aut = authenticity_token;
   $http.get('/session').success(function(data){
@@ -12,8 +27,71 @@ app.controller('HeaderController', ['$http', function($http) {
   })
 }]);
 
-app.controller('PostsController', ['$http', function($http){
-  //get authenticity_token from DOM (rails injects it on load)
+app.controller('UserController', ['$http', '$routeParams', function($http, $routeParams){
+  var controller = this;
+  //this fetches posts data and adds it to controller
+  this.getPosts = function(){
+    // get posts for current User
+    $http.get('/posts').success(function(data){
+      controller.current_user_posts = data.posts;
+      console.log(data)
+    });
+  };
+
+  this.getUser = function () {
+    $http.get('/users/' + $routeParams.id).success(function(data){
+      controller.founduser = data
+      console.log(data);
+    })
+  }
+
+  this.updateUser = function(user){
+    $http.patch('/users/' + user.id).success(function(data){
+      controller.current_user = data.user;
+    });
+  };
+
+  this.destroyUser = function(user){
+    $http.delete('/users/' + user.id).success(function(data) {
+
+    })
+  }
+  this.getPosts();
+  this.getUser();
+}]);
+
+app.controller('FollowController', ['$http', function($http){
+  var _this = this;
+
+  this.getFollowers = function(){
+    $http.get('/users/1/followers').success(function(data){
+      _this.followers = data.followers.users;
+    });
+  }
+
+  this.getFollowing = function(){
+    $http.get('/users/1/following').success(function(data){
+      console.log(data);
+      _this.following = data.following.users;
+    });
+  }
+
+  this.createFollow = function(){
+    $http.post('/relationships').then(function(response) {
+
+    })
+  }
+
+  this.destroyFollow = function(other_user){
+    $http.delete('/relationships/' + other_user.id).then(function(response) {
+
+    })
+  }
+}])
+
+
+app.controller('PostsController', ['$http', '$scope', function($http, $scope){
+  // get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
   this.aut = authenticity_token;
@@ -29,7 +107,30 @@ app.controller('PostsController', ['$http', function($http){
      console.log(_this.posts)
     });
   } // end of getPosts function
+
+  this.getFollowers = function(){
+    $http.get('/users/' + $scope.current_user.id + '/followers').success(function(data){
+      _this.followers = data.followers.users;
+    });
+  } // end of getFollowers function
+
+  this.getFollowing = function(){
+    $http.get('/users/' + $scope.current_user.id + '/following').success(function(data){
+      _this.following = data.following.users;
+    });
+  } // end of getFollowers function
+
+  this.getUserPosts = function () {
+    $http.get('/users/' + $scope.current_user.id).success(function(data){
+      _this.userposts = data.posts
+      console.log(data);
+    })
+  }
+
   this.getPosts()
+  this.getFollowers();
+  this.getFollowing();
+  this.getUserPosts();
 }]); // end of PostsController
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
@@ -44,6 +145,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'angular_templates/signup.html',
        controller: 'HeaderController',
        controllerAs: 'ctrl'
+     }).
+     when('/users/:id', {
+       templateUrl: 'angular_templates/show.html',
+       controller: 'UserController',
+       controllerAs: 'userCtrl'
      }).
      when('/application/feed', {
        templateUrl: 'angular_templates/vboard.html',
