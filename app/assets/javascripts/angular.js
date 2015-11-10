@@ -26,6 +26,7 @@ app.controller('PostsController', ['$http', function($http){
     // get posts for current user
     $http.get('/posts').success(function(data){
      _this.posts = data.posts;
+     _this.current_user = data.current_user;
      console.log(_this.posts)
     });
   } // end of getPosts function
