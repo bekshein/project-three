@@ -15,7 +15,21 @@ body {
 .logo {
   margin: 10%;
   color: deeppink;
-  animation: color 4s linear infinite;
+  text-align: center;
+  font-style: italic;
+
+}
+
+.logo h1 {
+  animation: color 6s linear infinite;
+  font-size: 5em;
+  letter-spacing: 3px;
+
+}
+
+.logo p {
+  font-size: 1em;
+  color: lightgrey;
 }
 
 .ball {
@@ -24,23 +38,44 @@ body {
   border-radius: 50px;
   background-color: deeppink;
   position: absolute;
-  top: 90px;
-  left: 105px;
-  animation: orbit 4s linear infinite;
+  top: 22%;
+  left: 50%;
+  animation: orbit 6s linear infinite;
+  z-index: 2;
 }
 
-/*@keyframes orbit {
-    from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+.ball2 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: steelblue;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  animation: orbit2 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@keyframes orbit2 {
+    from { transform: rotate(360deg) translateX(130px) rotate(-360deg); }
+    to   { transform: rotate(0deg) translateX(130px) rotate(-0deg); }
 }
 
 @keyframes color {
-  50% {color: black}
-}*/
+  50% {color:  steelblue}
+}
 
 
 /* welcome page | login / signup */
 
+.ng-view {
+
+}
 
 
 .login {
@@ -53,7 +88,7 @@ body {
 }
 
 h3 {
-  font-size: 15px;
+  font-size: 1em;
   text-transform: uppercase;
   letter-spacing: 5px;
   margin-bottom: 3%;
@@ -89,6 +124,7 @@ input {
   font-size: 0.5em;
   padding: 2%;
   width: 90%;
+
 }
 
 .welcome-submit {
@@ -104,4 +140,9 @@ input {
 
 .welcome-submit:hover {
   box-shadow: 2px 0px 20px #888888;
+}
+
+.welcome-submit:active {
+  box-shadow: 2px 0px 20px #888888;
+  margin-top: 0.5%;
 }
