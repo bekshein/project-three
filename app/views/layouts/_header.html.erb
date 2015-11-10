@@ -1,5 +1,4 @@
 <header ng-controller="HeaderController as ctrl">
-
     <% if current_user %>
     <form class="logout-button" action="<%= session_path %>" method="POST">
       <input type="hidden" name="authenticity_token"

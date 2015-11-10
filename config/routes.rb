@@ -19,8 +19,17 @@ Rails.application.routes.draw do
   get 'application/following'
   # gets to following
 
-  resources :posts, only: [:index, :create, :new], defaults: { format: :json}
-  resources :users, defaults: {format: :json}
+  # member method sets routes to users/:id/following or users/:id/followers
+  resources :users, defaults: { format: :json } do
+    member do
+      get :following, :followers
+    end
+  end
+
+  # used for follow and unfollow
+  resources :relationships, only: [:create, :destroy]
+
+  resources :posts, only: [:index, :create, :new], defaults: { format: :json }
 
   # session stuff
   get '/session' => 'session#current_user', defaults: { format: :json }
