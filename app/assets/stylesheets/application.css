@@ -13,7 +13,7 @@ body {
 /* welcome page | logo */
 
 .logo {
-  margin: 10%;
+  margin: 8%;
   color: deeppink;
   text-align: center;
   font-style: italic;
@@ -72,10 +72,6 @@ body {
 
 
 /* welcome page | login / signup */
-
-.ng-view {
-
-}
 
 
 .login {
@@ -145,4 +141,14 @@ input {
 .welcome-submit:active {
   box-shadow: 2px 0px 20px #888888;
   margin-top: 0.5%;
+}
+
+/* alert */
+
+.alert {
+  text-align: center;
+  margin: 2%;
+  color: red;
+  font-size: 0.75em;
+  width: 100%;
 }

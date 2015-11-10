@@ -1,9 +1,3 @@
-<% if flash[:message] %>
-  <div class="alert">
-    <%= flash[:message] %>
-  </div>
-<% end %>
-
 <div class="logo">
   <h1>V-BOARD</h1>
     <p>share the sound to your vibe</p>
@@ -12,7 +6,12 @@
 </div>
 
 
-
-<div  ng-view >
-
+<div ng-view >
+<!-- angular templates -->
 </div>
+
+<% if flash[:message] %>
+  <div class="alert">
+    <%= flash[:message] %>
+  </div>
+<% end %>
