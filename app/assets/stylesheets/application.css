@@ -17,13 +17,12 @@ body {
   color: deeppink;
   text-align: center;
   font-style: italic;
-
 }
 
 .logo h1 {
   animation: color 6s linear infinite;
   font-size: 5em;
-  letter-spacing: 3px;
+  letter-spacing: 10px;
 
 }
 

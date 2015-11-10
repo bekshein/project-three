@@ -1,21 +1,18 @@
-<header ng-controller="HeaderController as header">
+<header ng-controller="HeaderController as ctrl">
 
     <% if current_user %>
     <form class="logout-button" action="<%= session_path %>" method="POST">
       <input type="hidden" name="authenticity_token"
         value="<%= form_authenticity_token %>">
       <input type="hidden" name="_method" value="DELETE">
-      <label for="logout-button" class="logout-label">Log out</label>
+      <label for="logout-button" class="logout-label">Bye <3</label>
       <input id="logout-button" type="submit" value="Log Out!" hidden>
     </form>
-      <p class="message"> Nice to see you again, {{header.current_user.username}}. </p>
-
     <% end %>
 
     <div class="logo">
-      <h1>vibez</h1>
+      <h1>V-BOARD</h1>
     </div>
+    <p class="message">This is your V-BOARD, {{ctrl.current_user.username}}. </p>
 
-
-    <%= render partial: 'layouts/nav' %>
 </header>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
-  get 'application/vibezboard'
+  get 'application/feed'
   # gets to overview
 
   get 'application/profile'
@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
   get 'application/signup'
   # gets to signup
+
+  get 'application/followers'
+  # gets to followers
+
+  get 'application/following'
+  # gets to following
 
   resources :posts, only: [:index, :create, :new], defaults: { format: :json}
   resources :users, defaults: {format: :json}

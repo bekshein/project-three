@@ -8,18 +8,25 @@ class ApplicationController < ActionController::Base
     render '/welcome'
   end
 
-  def vibezboard
-    render '/vibezboard', layout: 'angular'
+  def feed
+    render '/feed', layout: 'angular'
   end
 
   def profile
-    render '/profile', layout: 'angular'
+    render '/feed', layout: 'angular'
   end
 
   def newpost
-    render '/newpost', layout: 'angular'
+    render '/feed', layout: 'angular'
   end
 
+  def followers
+    render '/feed', layout: 'angular'
+  end
+
+  def following
+    render '/feed', layout: 'angular'
+  end
 
   private
 

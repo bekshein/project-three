@@ -16,6 +16,7 @@ app.controller('PostsController', ['$http', function($http){
   //get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
+  this.aut = authenticity_token;
 
   this.VIBE_TYPES  = ['sad', 'cool', 'chill', 'happy']
   this.newPostVibe = 'sad';
@@ -43,5 +44,30 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'angular_templates/signup.html.erb',
        controller: 'HeaderController',
        controllerAs: 'ctrl'
+     }).
+     when('/application/feed', {
+       templateUrl: 'angular_templates/vboard.html.erb',
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
+     }).
+     when('/application/profile', {
+       templateUrl: 'angular_templates/profile.html.erb',
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
+     }).
+     when('/application/newpost', {
+       templateUrl: 'angular_templates/new.html.erb',
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
+     }).
+     when('/application/following', {
+       templateUrl: 'angular_templates/following.html.erb',
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
+     }).
+     when('/application/followers', {
+       templateUrl: 'angular_templates/followers.html.erb',
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
      });
 }]);
