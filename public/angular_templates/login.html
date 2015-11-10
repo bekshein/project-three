@@ -1,0 +1,12 @@
+<h3><span class="active-h3">Login </span> | <span class="signup-title"> <a href="/signup">Sign up</a> </span></h3>
+
+<div class="login">
+<form action="/session" method="POST">
+  <input type="hidden" name="authenticity_token" value="{{ctrl.aut}}">
+
+  <input type="email" name="user[email]" placeholder="your email address"> </br>
+  <input type="password" name="user[password]" placeholder="desired password"> </br>
+  <label for="login-submit" class="welcome-submit" value="Log in">LOG IN</label>
+  <input type="submit" id="login-submit" value="Log in" hidden>
+</form>
+</div>
