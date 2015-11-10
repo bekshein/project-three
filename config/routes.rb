@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'application/newpost'
   # gets to new post
 
+  get 'application/signup'
+  # gets to signup
+
   resources :posts, only: [:index, :create, :new], defaults: { format: :json}
   resources :users, defaults: {format: :json}
 

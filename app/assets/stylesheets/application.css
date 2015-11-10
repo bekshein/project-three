@@ -14,43 +14,42 @@ body {
 
 .logo {
   margin: 10%;
+  color: deeppink;
+  animation: color 4s linear infinite;
 }
 
 .ball {
-  transform-origin: 200% center;
   width: 10px;
   height: 10px;
   border-radius: 50px;
   background-color: deeppink;
-  position: relative;
-  animation: orbit 3s linear infinite;
+  position: absolute;
+  top: 90px;
+  left: 105px;
+  animation: orbit 4s linear infinite;
 }
 
-.ball:before {
-  content: '';
-  height: 10px;
-  width: 10px;
-  border-radius: 50px;
-  background-color: deeppink;
-  position: relative;
-  animation: orbit 3s linear reverse infinite;
+/*@keyframes orbit {
+    from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
 }
 
+@keyframes color {
+  50% {color: black}
+}*/
 
-@keyframes orbit {
-  100% {transform: rotate(-360deg); }
-}
 
-/* welcome page | login */
+/* welcome page | login / signup */
+
+
 
 .login {
-  border: 1px black solid;
-  padding: 3%;
   width: 50%;
   position: relative;
-  top: 40px;
+  top: 10%;
   left: 30%;
-  overflow: hidden;
+  display: inline-block;
+  transition: 2s;
 }
 
 h3 {
@@ -58,6 +57,31 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 5px;
   margin-bottom: 3%;
+  position: relative;
+  top: 10%;
+  left: 30%;
+  transition: 5s;
+}
+
+h3 a {
+  text-decoration: none;
+  color: black;
+}
+
+h3 a:hover {
+  border-bottom: 1px solid black;
+  padding-bottom: 8px;
+}
+
+h3 a:active {
+  color: lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+.active-h3 {
+  color: deeppink;
+
+  font-weight: bold;
 }
 
 input {
@@ -67,7 +91,7 @@ input {
   width: 90%;
 }
 
-.login-submit {
+.welcome-submit {
   font-size: 1em;
   background-color: white;
   color: black;
@@ -78,10 +102,6 @@ input {
   box-shadow: 2px 0px 10px #888888;
 }
 
-.login-submit:hover {
+.welcome-submit:hover {
   box-shadow: 2px 0px 20px #888888;
-}
-
-.signup {
-  display: none;
 }
