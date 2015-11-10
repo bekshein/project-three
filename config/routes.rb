@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   # used for follow and unfollow
   resources :relationships, only: [:create, :destroy]
 
-  resources :posts, only: [:index, :create, :new], defaults: { format: :json}
+  resources :posts, only: [:index, :create, :new], defaults: { format: :json }
 
   # session stuff
   get '/session' => 'session#current_user', defaults: { format: :json }

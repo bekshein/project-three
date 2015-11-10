@@ -1,4 +1,4 @@
-json.current_user current_user.username
+# json.current_user current_user.username
 
 json.id               @user.id
 json.username         @user.username
