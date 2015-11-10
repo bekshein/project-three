@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    <li><a href="/application/feed">V-BOARD</a></li>
+    <li class="active-nav">Your Profile</li>
+    <li><a href="/application/newpost">Create new post</a></li>
+    <li><a href="/application/following">People you follow</a></li>
+    <li><a href="/application/followers">Followers</a></li>
+  </ul>
+</nav>
+
+<ul>
+  <li ng-repeat="post in pctrl.posts">
+    <p>{{post.artist_name}}</p>
+    <p>{{post.song_title}}</p>
+  </li>
+</ul>

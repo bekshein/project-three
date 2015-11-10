@@ -1,10 +1,16 @@
-<%= render partial: 'layouts/header' %>
+<nav>
+  <ul>
+    <li><a href="/application/feed">V-BOARD</a></li>
+    <li><a href="/application/profile">Your Profile</a></li>
+    <li class="active-nav">Create new post</li>
+    <li><a href="/application/following">People you follow</a></li>
+    <li><a href="/application/followers">Followers</a></li>
+  </ul>
+</nav>
 
-
-<h3>Create a new post </h3>
-<form class="new-post" action="<%= posts_path %>" method="post">
+<form class="new-post" action="/posts" method="post">
   <input type="hidden" name="authenticity_token"
-    value="<%= form_authenticity_token %>">
+    value="{{pctrl.aut}}">
   <input type="text" name="post[song_title]" placeholder= "song title"></br>
   <input type="text" name="post[artist_name]" placeholder="artist name"></br>
   <select name="post[vibe]">

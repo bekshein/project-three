@@ -1,3 +1,5 @@
+/* general code */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,52 +10,81 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/* Partial styling */
+
+/* Header */
 
 main {
   text-align: center;
 }
 
-h1 {
-  font-size: 4rem;
-  text-align: center;
+header {
+  margin-top: 6%;
+  margin-bottom: 5%;
+}
+
+.logo h1 {
   clear: both;
+  color: deeppink;
+  text-align: center;
+  font-style: italic;
+  font-size: 4em;
+  letter-spacing: 10px;
 }
 
 nav ul {
   margin: 3% auto 3% auto;
+  font-size: 0.75em;
+  font-style: italic;
   text-align: center;
+  text-transform: uppercase;
 }
 
 nav ul li {
   display: inline;
-  background-color: steelblue;
-  border-radius: 5px;
   padding: 1%;
 }
 
 nav a {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 nav a:hover {
   opacity: 0.5;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 8px;
+  cursor: pointer;
 }
 
+nav a:active {
+  opacity: 0.3;
+}
+
+.active-nav {
+  color: deeppink;
+}
 
 .message {
-  display: inline;
-  float: left;
+  font-size: 0.5em;
+  color: deeppink;
+  font-style: italic;
 }
 
-.logout {
-  float: right;
-  padding-left: 3%;
+.message-username {
+  font-weight: 900;
+}
+
+.logout-button {
+  font-size: 1em;
+  color: deeppink;
+  position: fixed;
+  right: 1%;
+  top: 1%;
 }
 
 .logout-label:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 /* titles */

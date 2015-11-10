@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
-  get 'application/vibezboard'
+  get 'application/feed'
   # gets to overview
 
   get 'application/profile'
@@ -10,7 +10,14 @@ Rails.application.routes.draw do
   get 'application/newpost'
   # gets to new post
 
-  resources :posts, only: [:index, :create, :new], defaults: { format: :json }
+  get 'application/signup'
+  # gets to signup
+
+  get 'application/followers'
+  # gets to followers
+
+  get 'application/following'
+  # gets to following
 
   # member method sets routes to users/:id/following or users/:id/followers
   resources :users, defaults: { format: :json } do
@@ -21,6 +28,8 @@ Rails.application.routes.draw do
 
   # used for follow and unfollow
   resources :relationships, only: [:create, :destroy]
+
+  resources :posts, only: [:index, :create, :new], defaults: { format: :json}
 
   # session stuff
   get '/session' => 'session#current_user', defaults: { format: :json }

@@ -1,0 +1,21 @@
+<nav>
+  <ul>
+    <li class="active-nav">V-BOARD</li>
+    <li><a href="/application/profile">Your Profile</a></li>
+    <li><a href="/application/newpost">Create new post</a></li>
+    <li><a href="/application/following">People you follow</a></li>
+    <li><a href="/application/followers">Followers</a></li>
+  </ul>
+</nav>
+
+<label for="">Choose your vibe:</label>
+    <select class="vibe-select" ng-model="search.$">
+      <option value="sad">Sad</option>
+      <option value="cool">Cool</option>
+      <option value="happy">Happy</option>
+      <option value="angry">Angry</option>
+    </select>
+
+<ul ng-repeat="post in pctrl.posts | filter:search:strict ">
+      <li>{{post.song_title}}</li>
+</ul>
