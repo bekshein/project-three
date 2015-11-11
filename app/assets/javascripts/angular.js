@@ -142,8 +142,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
      }).
      when('/application/profile', {
        templateUrl: 'angular_templates/profile.html',
-       controller: 'PostsController',
-       controllerAs: 'pctrl'
+       controller: 'UserController',
+       controllerAs: 'userCtrl'
      }).
      when('/application/newpost', {
        templateUrl: 'angular_templates/new.html',
@@ -152,12 +152,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
      }).
      when('/application/following', {
        templateUrl: 'angular_templates/following.html',
-       controller: 'PostsController',
-       controllerAs: 'pctrl'
+       controller: 'UserController',
+       controllerAs: 'userCtrl'
      }).
      when('/application/followers', {
        templateUrl: 'angular_templates/followers.html',
-       controller: 'PostsController',
-       controllerAs: 'pctrl'
+       controller: 'UserController',
+       controllerAs: 'userCtrl'
      });
 }]);
