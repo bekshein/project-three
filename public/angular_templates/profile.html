@@ -13,8 +13,8 @@
 
 
 <div class="board">
-    <h3>This V-Board belongs to {{pctrl.current_user}}</h3>
-    <div class="post" ng-repeat="post in pctrl.posts">
+    <h3>This V-Board belongs to {{ $parent.current_user.username }}</h3>
+    <div class="post" ng-repeat="post in userCtrl.userposts">
       <p class="vibe">{{post.vibe}}</p>
       <p>{{post.artist_name}}</p>
       <p>{{post.song_title}}</p>
@@ -22,49 +22,5 @@
 </div>
 
 <!-- move stats here -->
-<h3>Following: {{ pctrl.following.length }}</h3>
-<h3>Followers: {{ pctrl.followers.length }}</h3>
-
-
-<!-- follow button NEED TO FIX
-<div ng-controller="FollowController as fCtrl">
-<form ng-submit="fCtrl.createFollow()">
-  <input type="submit" value="Follow" />
-</form>
-
-<form ng-submit="fCtrl.destroyFollow()">
-  <input type="submit" value="Unfollow" />
-</form>
-</div>-->
-
-
-
-<h3>posts</h3>
-<ul>
-  <li ng-repeat="post in pctrl.userposts">
-    <h1> Artist </h1>
-    <p>{{post.artist_name}}</p>
-    <h1> Song </h1>
-    <p>{{post.song_title}}</p>
-  </li>
-</ul>
-
-<!-- <h3>followers</h3>
-<ul>
-  <li ng-repeat="follower in pctrl.followers">
-    <p><a ng-href="users/{{follower.id}}">{{follower.username}}</a></p>
-    <p>{{follower.email}}</p>
-  </li>
-</ul>
-
-<h3>following</h3>
-<ul>
-  <li ng-repeat="followed in pctrl.following">
-    <p><a ng-href="users/{{followed.id}}">{{followed.username}}</a></p>
-    <p>{{followed.email}}</p>
-  </li>
-</ul>
-
-<div id="example">
- hey
-</div> -->
+<h3>Following: {{ userCtrl.following.length }}</h3>
+<h3>Followers: {{ userCtrl.followers.length }}</h3>
