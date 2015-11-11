@@ -13,7 +13,7 @@
 
 
 <div class="board">
-    <h3>This V-Board belongs to {{pctrl.current_user}}</h3>
+    <h3>This V-Board belongs to {{$parent.current_user.username}}</h3>
     <div class="post" ng-repeat="post in pctrl.posts">
       <p class="vibe">{{post.vibe}}</p>
       <p>{{post.artist_name}}</p>
