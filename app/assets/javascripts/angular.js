@@ -57,41 +57,37 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
 
     })
   }
-  this.getPosts();
-  this.getUser();
-}]);
-
-app.controller('FollowController', ['$http', function($http){
-  var _this = this;
 
   this.getFollowers = function(){
-    $http.get('/users/1/followers').success(function(data){
+    $http.get('/users/' + $scope.current_user.id + '/followers').success(function(data){
       _this.followers = data.followers.users;
     });
-  }
+  } // end of getFollowers function
 
   this.getFollowing = function(){
-    $http.get('/users/1/following').success(function(data){
-      console.log(data);
+    $http.get('/users/' + $scope.current_user.id + '/following').success(function(data){
       _this.following = data.following.users;
     });
-  }
+  } // end of getFollowing function
 
   this.createFollow = function(){
     $http.post('/relationships').then(function(response) {
 
     })
   }
-
   this.destroyFollow = function(other_user){
     $http.delete('/relationships/' + other_user.id).then(function(response) {
 
     })
   }
-}])
 
+  this.getUserPosts();
+  this.getUser();
+  this.getFollowers();
+  this.getFollowing();
+}]); // end of UserController
 
-app.controller('PostsController', ['$http', '$scope', function($http, $scope){
+app.controller('PostsController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
   // get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
@@ -110,18 +106,6 @@ app.controller('PostsController', ['$http', '$scope', function($http, $scope){
     });
   } // end of getPosts function
 
-  this.getFollowers = function(){
-    $http.get('/users/' + $scope.current_user.id + '/followers').success(function(data){
-      _this.followers = data.followers.users;
-    });
-  } // end of getFollowers function
-
-  this.getFollowing = function(){
-    $http.get('/users/' + $scope.current_user.id + '/following').success(function(data){
-      _this.following = data.following.users;
-    });
-  } // end of getFollowers function
-
   this.getUserPosts = function () {
     $http.get('/users/' + $scope.current_user.id).success(function(data){
       _this.userposts = data.posts
@@ -130,8 +114,6 @@ app.controller('PostsController', ['$http', '$scope', function($http, $scope){
   }
 
   this.getPosts()
-  this.getFollowers();
-  this.getFollowing();
   this.getUserPosts();
 }]); // end of PostsController
 
