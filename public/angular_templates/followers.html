@@ -8,10 +8,9 @@
   </ul>
 </nav>
 
-
-<h3>Followers: {{ pctrl.followers.length }}</h3>
+<h3>Followers: {{ userCtrl.followers.length }}</h3>
 <ul>
-  <li ng-repeat="follower in pctrl.followers">
+  <li ng-repeat="follower in userCtrl.followers">
     <p><a ng-href="users/{{follower.id}}">{{follower.username}}</a></p>
     <p>{{follower.email}}</p>
   </li>

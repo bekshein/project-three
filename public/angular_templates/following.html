@@ -8,9 +8,9 @@
   </ul>
 </nav>
 
-<h3>Following: {{ pctrl.following.length }}</h3>
+<h3>Following: {{ userCtrl.following.length }}</h3>
 <ul>
-  <li ng-repeat="followed in pctrl.following">
+  <li ng-repeat="followed in userCtrl.following">
     <p><a ng-href="users/{{followed.id}}">{{followed.username}}</a></p>
     <p>{{followed.email}}</p>
   </li>
