@@ -1,6 +1,5 @@
 var app = angular.module('VibezApp', ['ngRoute']);
 
-
 // Main Controller to access everything
 app.controller('ParentController', ['$http', '$scope',
 function ($http, $scope) {
@@ -15,7 +14,6 @@ function ($http, $scope) {
 }]);
 
 app.controller('HeaderController', ['$http', '$scope', function($http, $scope) {
-
     // get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
@@ -27,27 +25,30 @@ app.controller('HeaderController', ['$http', '$scope', function($http, $scope) 
   })
 }]);
 
-app.controller('UserController', ['$http', '$routeParams', function($http, $routeParams){
-  var controller = this;
-  //this fetches posts data and adds it to controller
-  this.getPosts = function(){
-    // get posts for current User
-    $http.get('/posts').success(function(data){
-      controller.current_user_posts = data.posts;
-      console.log(data)
-    });
-  };
+app.controller('UserController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
+  // get authenticity_token from DOM (rails injects it on load)
+  var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var _this = this;
+  this.aut = authenticity_token;
+
+  this.getUserPosts = function () {
+    $http.get('/users/' + $scope.current_user.id).success(function(data){
+      _this.userposts = data.posts
+      _this.current_user = data.current_user;
+      console.log(data);
+    })
+  }
 
   this.getUser = function () {
     $http.get('/users/' + $routeParams.id).success(function(data){
-      controller.founduser = data
+      _this.founduser = data;
       console.log(data);
     })
   }
 
   this.updateUser = function(user){
-    $http.patch('/users/' + user.id).success(function(data){
-      controller.current_user = data.user;
+    $http.patch('/users/' + $scope.current_user.id + '/edit').success(function(data){
+      _this.current_user = data.user;
     });
   };
 
