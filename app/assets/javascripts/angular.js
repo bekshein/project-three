@@ -144,8 +144,8 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
       authenticity_token: authenticity_token,
       // values from form
       post: {
-        song_title: this.newPostSongTitle,
-        artist_name: this.newPostArtistName,
+        title: this.newPostTitle,
+        source: this.newPostSource,
         vibe: this.newPostVibe,
       }
     }).success(function(data){
@@ -195,7 +195,7 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
       trackInput.attr('value', title);
       var sourceInput = angular.element('#source-input');
       sourceInput.attr('value', permalink_url);
-      angular.element('ul').remove();
+      angular.element('.search-remove').remove();
       console.log(title)
     };
 

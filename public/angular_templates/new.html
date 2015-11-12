@@ -9,7 +9,7 @@
   </ul>
 </nav>
 
-<div class="search">
+<div class="search-remove" class="search">
       <button ng-click="pctrl.makeCall()">Search</button>
       <input
         type="text"
@@ -17,8 +17,8 @@
         ng-model="pctrl.searchString"/>
 </div>
 
-    <ul ng-repeat="track in pctrl.tracks | filter:search:strict">
-      <li>
+    <ul  ng-repeat="track in pctrl.tracks | filter:search:strict">
+      <li class="search-remove">
           {{track.title}}
           <button class="play" data-id="{{$index}}" data-url="{{track.permalink_url}}" ng-click="pctrl.getPlayer()">Play</button>
           <button class="choose" data-id="{{$index}}" data-url="{{track.permalink_url}}" data-title="{{track.title}}" ng-click="pctrl.chooseSong()">choose</button>
@@ -28,7 +28,7 @@
       <iframe class="iframe" width="0" height="0" scrolling="no" frameborder="no"></iframe>
 
 
-<form class="new-post" action="/posts" method="post">
+<form ng-submit="pctrl.createPost()" action="/posts" method="post">
   <input type="hidden" name="authenticity_token"
     value="{{pctrl.aut}}">
   <input id="track-input" type="text" name="post[title]" placeholder= "track"></br>
