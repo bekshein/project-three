@@ -1,8 +1,8 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.string :song_title, null: false
-      t.string :artist_name, null: false
+      t.string :title, null: false
+      t.string :source, null: false
       t.string :vibe, null: false
       t.integer :like
 

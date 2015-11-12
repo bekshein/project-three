@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
 	def post_params
 		params.require(:post)
-			.permit(:song_title, :artist_name, :vibe, :like, :user_id)
+			.permit(:title, :source, :vibe, :like, :user_id)
 	end
 
 	def correct_user
