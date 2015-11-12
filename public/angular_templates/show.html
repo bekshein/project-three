@@ -1,4 +1,24 @@
-<h1> individual show </h1>
+<nav>
+  <ul>
+    <li><a href="/application/feed">V-BOARD</a></li>
+    <li><a href="/application/profile">Your Profile</a></li>
+    <li><a href="/application/newpost">Create new post</a></li>
+    <li><a href="/application/following">People you follow</a></li>
+    <li><a href="/application/followers">Followers</a></li>
+    <li><a href="/application/users">Find Users</a></li>
+  </ul>
+</nav>
 
-<p>{{userCtrl.founduser.username}}</p>
-<p>{{userCtrl.founduser.posts}}</p>
+
+<div class="board">
+    <h3>This V-Board belongs to {{userCtrl.founduser.username}}</h3>
+    <div class="post" ng-repeat="post in userCtrl.founduserposts">
+      <p class="vibe">{{post.vibe}}</p>
+      <p>{{post.artist_name}}</p>
+      <p>{{post.song_title}}</p>
+    </div>
+</div>
+
+<!-- move stats here -->
+<h3>Following: {{ userCtrl.ofollowing.length }}</h3>
+<h3>Followers: {{ userCtrl.ofollowers.length }}</h3>
