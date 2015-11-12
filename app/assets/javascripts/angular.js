@@ -137,8 +137,8 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
       var url = "https://w.soundcloud.com/player/?url="
       var el = angular.element(event.target)
       var permalink_url = el.data('url');
-      var iframeId = el.data('id');
-      var iframe = angular.element('#iframe' + iframeId);
+      // var iframeId = el.data('id');
+      var iframe = angular.element('.iframe');
       url = url + permalink_url;
       iframe.attr('src', url);
       iframe.attr('width', "500");
