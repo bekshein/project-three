@@ -85,6 +85,7 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
   this.getUser();
   this.getFollowers();
   this.getFollowing();
+  this.makePost();
 }]); // end of UserController
 
 app.controller('PostsController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
@@ -177,6 +178,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'angular_templates/show.html',
        controller: 'UserController',
        controllerAs: 'userCtrl'
+     }).
+     when('/posts', {
+       templateUrl: 'angular_templates/new.html',
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
      }).
      when('/application/feed', {
        templateUrl: 'angular_templates/vboard.html',
