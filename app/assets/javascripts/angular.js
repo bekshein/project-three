@@ -119,12 +119,14 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
 
 
     this.makeCall = function() {
+      console.log(this.searchString)
       var ctrlObj = this;
       var endpoint = 'http://api.soundcloud.com/tracks?q=';
       endpoint += this.searchString + "&client_id=" + this.client_id;
       var promise = $http.get(endpoint);
       promise.success(function(data) {
-        console.log(angular.element('.play'));
+        console.log(data);
+        // console.log(angular.element('.play'));
         ctrlObj.tracks = data;
       });
       promise.error(function(error){
