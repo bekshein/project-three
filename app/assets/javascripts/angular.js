@@ -18,6 +18,7 @@ app.controller('HeaderController', ['$http', '$scope', function($http, $scope) 
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
   this.aut = authenticity_token;
+
   $http.get('/session').success(function(data){
     _this.current_user = data.current_user;
     console.log(_this.current_user)
@@ -129,6 +130,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'angular_templates/signup.html',
        controller: 'HeaderController',
        controllerAs: 'ctrl'
+     }).
+     when('/application/users', {
+       templateUrl: 'angular_templates/users.html',
+       controller: 'UserController',
+       controllerAs: 'userCtrl'
      }).
      when('/users/:id', {
        templateUrl: 'angular_templates/show.html',
