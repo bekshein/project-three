@@ -134,8 +134,8 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
       authenticity_token: authenticity_token,
       // values from form
       post: {
-        song_title: this.newPostSongTitle,
-        artist_name: this.newPostArtistName,
+        title: this.newPostTitle,
+        source: this.newPostSource,
         vibe: this.newPostVibe,
       }
     }).success(function(data){
