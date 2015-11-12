@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% provide(:title, 'Edit user') %>
 <% provide(:button_text, 'Save changes') %>
 <h1>Update your profile</h1>
@@ -6,3 +7,33 @@
     <%= render 'form' %>
   </div>
 </div>
+=======
+<h4>New Post</h4>
+
+<%= form_for(@user, html: {multipart: true}) do |f| %>
+  <ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+
+  <p>
+    <%= f.label :email  %><br />
+    <%= f.text_field :email  %>
+  </p>
+
+  <p>
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </p>
+
+  <p>
+    <%= f.label :image, "Attach an Image" %><br>
+    <%= f.file_field :image %>
+  </p>
+
+  <p>  
+    <%= f.submit %>
+  </p>
+<% end %>
+>>>>>>> 85c4767d27983b53454e55b61ed13f0c7cb4a831

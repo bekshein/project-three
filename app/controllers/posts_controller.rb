@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 	# before_action :correct_user, only: :destroy
 
 	def index
+		
 		@posts = Post.all
 		@users = User.all
 	end
@@ -37,9 +38,12 @@ class PostsController < ApplicationController
 			.permit(:title, :source, :vibe, :like, :user_id)
 	end
 
+<<<<<<< HEAD
 	def correct_user
 		@post = current_user.posts.find_by(id: params[:id])
 		redirect_to root_url if @post.nil?
 	end
 
+=======
+>>>>>>> 85c4767d27983b53454e55b61ed13f0c7cb4a831
 end

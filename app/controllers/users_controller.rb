@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
   # prevents unauthorized access unless logged in, commenting out until done with testing
   # before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
   # before_action :correct_user, only: [:edit, :update]
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+
     if @user.update(user_params)
       flash[:message] = "Update has been saved!"
     else
@@ -61,6 +63,7 @@ class UsersController < ApplicationController
   end
 
 private
+
 
   def user_params
     return params.require(:user).permit(:username, :email, :password)
