@@ -7,8 +7,8 @@ json.password_digest  @user.password_digest
 json.posts(@posts) do |post|
 
   json.id          post.id
-  json.song_title  post.song_title
-  json.artist_name post.artist_name
+  json.title       post.title
+  json.source      post.source
   json.vibe        post.vibe
 
 end
