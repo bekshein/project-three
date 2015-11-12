@@ -144,6 +144,18 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
       iframe.attr('width', "500");
       iframe.attr('height', "180");
     };
+    this.chooseSong = function() {
+      var el = angular.element(event.target);
+      var title = el.data('title');
+      console.log(title);
+      var permalink_url = el.data('url');
+      console.log(permalink_url);
+      var trackInput = angular.element('#track-input');
+      var sourceInput = angular.element('#source-input');
+      trackInput.attr('value', title);
+      sourceInput.attr('value', permalink_url);
+      angular.element('ul').remove();
+    };
 
   this.getPosts()
   this.getUserPosts();
