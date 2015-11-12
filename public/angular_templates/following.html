@@ -1,0 +1,17 @@
+<nav>
+  <ul>
+    <li><a href="/application/feed">V-BOARD</a></li>
+    <li><a href="/application/profile">Your Profile</a></li>
+    <li><a href="/application/newpost">Create new post</a></li>
+    <li class="active-nav">People you follow</li>
+    <li><a href="/application/followers">Followers</a></li>
+  </ul>
+</nav>
+
+<h3>Following: {{ userCtrl.following.length }}</h3>
+<ul>
+  <li ng-repeat="followed in userCtrl.following">
+    <p><a ng-href="users/{{followed.id}}">{{followed.username}}</a></p>
+    <p>{{followed.email}}</p>
+  </li>
+</ul>

@@ -1,15 +1,153 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* general styling */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* welcome page | logo */
+
+.logo {
+  margin: 8%;
+  color: deeppink;
+  text-align: center;
+  font-style: italic;
+}
+
+.logo h1 {
+  animation: color 6s linear infinite;
+  font-size: 5em;
+  letter-spacing: 10px;
+
+}
+
+.logo p {
+  font-size: 1em;
+  color: lightgrey;
+}
+
+.ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: deeppink;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  animation: orbit 6s linear infinite;
+  z-index: 2;
+}
+
+.ball2 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: steelblue;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  animation: orbit2 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@keyframes orbit2 {
+    from { transform: rotate(360deg) translateX(130px) rotate(-360deg); }
+    to   { transform: rotate(0deg) translateX(130px) rotate(-0deg); }
+}
+
+@keyframes color {
+  50% {color:  steelblue}
+}
+
+
+/* welcome page | login / signup */
+
+
+.login {
+  width: 50%;
+  position: relative;
+  top: 10%;
+  left: 30%;
+  display: inline-block;
+  transition: 2s;
+}
+
+h3 {
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 3%;
+  position: relative;
+  top: 10%;
+  left: 30%;
+  transition: 5s;
+}
+
+h3 a {
+  text-decoration: none;
+  color: black;
+}
+
+h3 a:hover {
+  border-bottom: 1px solid black;
+  padding-bottom: 8px;
+}
+
+h3 a:active {
+  color: lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+.active-h3 {
+  color: deeppink;
+
+  font-weight: bold;
+}
+
+input {
+  margin-bottom: 5%;
+  font-size: 0.5em;
+  padding: 2%;
+  width: 90%;
+
+}
+
+.welcome-submit {
+  font-size: 1em;
+  background-color: white;
+  color: black;
+  display: block;
+  padding: 2%;
+  width: 90%;
+  text-align: center;
+  box-shadow: 2px 0px 10px #888888;
+}
+
+.welcome-submit:hover {
+  box-shadow: 2px 0px 20px #888888;
+}
+
+.welcome-submit:active {
+  box-shadow: 2px 0px 20px #888888;
+  margin-top: 0.5%;
+}
+
+/* alert */
+
+.alert {
+  text-align: center;
+  margin: 2%;
+  color: red;
+  font-size: 0.75em;
+  width: 100%;
+}

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-	def show
-	end
+  # prevents unauthorized access unless logged in, commenting out until done with testing
+	# before_action :logged_in_user, only: [:create, :destroy]
+	# before_action :correct_user, only: :destroy
 
 	def index
 		@posts = Post.all
@@ -9,41 +10,23 @@ class PostsController < ApplicationController
 
 	def new
 		@post = Post.new
-		@moods = ['happy', 'good', 'euphoric', 'ecstasy', 'so so']
-		@users = User.all.map do |x|
-			[ x.username, x.id ]
-		end
 	end
 
 	def create
-		@post = Post.new(post_params)
-	  @post.save
-	  redirect_to posts_path
-	end
+		@post = current_user.posts.new(post_params)
 
-	def edit
-		@post = Post.find(params[:id])
-		@moods = ['happy', 'good', 'euphoric', 'ecstasy', 'so so']
-		@users = User.all.map do |x|
-			[ x.username, x.id ]
+		if @post.save
+			flash[:message] = "Post created!"
+		else
+			flash[:message] = @post.errors.full_messages.to_sentence
 		end
 	end
 
-	def update
-	  @post = Post.find(params[:id])
-	  @post.update(post_params)
-
-	  flash.notice = "Post Updated!"
-
-
-	  redirect_to posts_path
-	end
-
 	def destroy
-		Post.find(params[:id]).destroy
-		flash[:sucess] = "Post destroyed"
+		@post = Post.find(params[:id])
+		@post.destroy
 
-		redirect_to posts_path
+		flash[:message] = "Post has been deleted"
 	end
 
 	private
@@ -52,4 +35,10 @@ class PostsController < ApplicationController
 		params.require(:post)
 			.permit(:song_title, :artist_name, :vibe, :like, :user_id)
 	end
+
+	def correct_user
+		@post = current_user.posts.find_by(id: params[:id])
+		redirect_to root_url if @post.nil?
+	end
+
 end
