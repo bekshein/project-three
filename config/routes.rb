@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'application/following'
   # gets to following
 
+  get 'application/users'
+  # gets to users
+
   # member method sets routes to users/:id/following or users/:id/followers
   resources :users, defaults: { format: :json } do
     member do

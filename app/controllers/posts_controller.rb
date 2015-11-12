@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
 		if @post.save
 			flash[:message] = "Post created!"
+
 		else
 			flash[:message] = @post.errors.full_messages.to_sentence
 		end
