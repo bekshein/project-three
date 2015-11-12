@@ -1,0 +1,19 @@
+<nav>
+  <ul>
+    <li><a href="/application/feed">V-BOARD</a></li>
+    <li><a href="/application/profile">Your Profile</a></li>
+    <li><a href="/application/newpost">Create new post</a></li>
+    <li><a href="/application/following">People you follow</a></li>
+    <li><a href="/application/followers">Followers</a></li>
+    <li class="active-nav">Find Users</li>
+  </ul>
+</nav>
+
+
+<h3>All Users:</h3>
+<ul>
+  <li ng-repeat="user in userCtrl.users">
+    <p><a ng-href="users/{{user.id}}">{{user.username}}</a></p>
+    <p>{{user.email}}</p>
+  </li>
+</ul>
