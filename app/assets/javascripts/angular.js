@@ -107,15 +107,29 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     });
   } // end of getPosts function
 
-  this.getUserPosts = function () {
-    $http.get('/users/' + $scope.current_user.id).success(function(data){
-      _this.userposts = data.posts
-      console.log(data);
-    })
+  this.createPost = function(){
+    _this.current_user_posts.push({
+      song_title: this.newPostSongTitle,
+      artist_name: this.newPostArtistName,
+      vibe: this.newPostVibe,
+    });
+    // make a post to /posts
+    $http.post('/posts', {
+      authenticity_token: authenticity_token,
+      // values from form
+      post: {
+        song_title: this.newPostSongTitle,
+        artist_name: this.newPostArtistName,
+        vibe: this.newPostVibe,
+      }
+    }).success(function(data){
+      _this.current_user_posts.pop();
+      _this.current_user_posts.push(data.post);
+      _this.getPosts();
+    });
   }
 
-  this.getPosts()
-  this.getUserPosts();
+  this.getPosts();
 }]); // end of PostsController
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
