@@ -83,8 +83,18 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
   } // end of getOtherFollowing function
 
   this.createFollow = function(){
-    $http.post('/relationships').then(function(response) {
-
+    console.log($scope.userCtrl.founduser)
+    console.log($scope.$parent.current_user)
+    $http.post('/relationships', {
+      authenticity_token: authenticity_token,
+      relationship: {
+        followed_id: $scope.userCtrl.founduser.id,
+        follower_id: $scope.$parent.current_user.id
+      }
+    }).success(function(data) {
+      console.log(data);
+    }).error(function(err){
+      console.log(err);
     })
   }
 

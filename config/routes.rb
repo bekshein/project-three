@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   # used for follow and unfollow
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy], defaults: { format: :json }
 
   resources :posts, only: [:index, :create, :new], defaults: { format: :json }
 
