@@ -8,6 +8,23 @@
   </ul>
 </nav>
 
+<div class="search">
+      <button ng-click="pctrl.makeCall()">Search</button>
+      <input
+        type="text"
+        placeholder="search for a track"
+        ng-model="ctrl.searchString"/>
+</div>
+
+    <ul ng-repeat="track in pctrl.tracks | filter:search:strict">
+      <li>
+          {{track.title}}
+          <button class="play" data-id="{{$index}}" data-url="{{track.permalink_url}}" ng-click="pctrl.getPlayer()">Play</button>
+          <iframe class="iframe" id="iframe{{$index}}" width="0" height="0" scrolling="no" frameborder="no"></iframe>
+      </li>
+    </ul>
+
+
 <form class="new-post" action="/posts" method="post">
   <input type="hidden" name="authenticity_token"
     value="{{pctrl.aut}}">
