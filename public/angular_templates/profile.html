@@ -1,0 +1,26 @@
+<h3>MY PARENT HAS {{ $parent.current_user.id }} set as the current user.</h3>
+
+<nav>
+  <ul>
+    <li><a href="/application/feed">V-BOARD</a></li>
+    <li class="active-nav">Your Profile</li>
+    <li><a href="/application/newpost">Create new post</a></li>
+    <li><a href="/application/following">People you follow</a></li>
+    <li><a href="/application/followers">Followers</a></li>
+  </ul>
+</nav>
+
+
+
+<div class="board">
+    <h3>This V-Board belongs to {{ $parent.current_user.username }}</h3>
+    <div class="post" ng-repeat="post in userCtrl.userposts">
+      <p class="vibe">{{post.vibe}}</p>
+      <p>{{post.artist_name}}</p>
+      <p>{{post.song_title}}</p>
+    </div>
+</div>
+
+<!-- move stats here -->
+<h3>Following: {{ userCtrl.following.length }}</h3>
+<h3>Followers: {{ userCtrl.followers.length }}</h3>

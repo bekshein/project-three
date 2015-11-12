@@ -1,0 +1,124 @@
+/* general code */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+/* Header */
+
+main {
+  text-align: center;
+}
+
+header {
+  margin-top: 6%;
+  margin-bottom: 5%;
+}
+
+.logo h1 {
+  clear: both;
+  color: deeppink;
+  text-align: center;
+  font-style: italic;
+  font-size: 4em;
+  letter-spacing: 10px;
+}
+
+nav ul {
+  margin: 5% auto 3% auto;
+  font-size: 0.75em;
+  font-style: italic;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+nav ul li {
+  display: inline;
+  padding: 1%;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+nav a:hover {
+  opacity: 0.5;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+nav a:active {
+  opacity: 0.3;
+}
+
+.active-nav {
+  color: deeppink;
+}
+
+.message {
+  font-size: 0.5em;
+  color: deeppink;
+  font-style: italic;
+}
+
+.message-username {
+  font-weight: 900;
+}
+
+.logout-button {
+  font-size: 1em;
+  color: deeppink;
+  position: fixed;
+  right: 1%;
+  top: 1%;
+}
+
+.logout-label:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* titles */
+
+h4 {
+  margin: 3%;
+}
+
+.vibe-select {
+  margin: 2%;
+}
+
+/* your profile board */
+
+.board {
+  padding: 3%;
+  height: 100%;
+  width: 70%;
+  margin: 5% auto 5% auto;
+  border: 1px solid deeppink;
+  border-radius: 20px;
+}
+
+
+.board h3 {
+  color: white;
+  background-color: deeppink;
+  padding: 3%;
+  margin-left: 0;
+  margin-bottom: 4%;
+  font-size: 1em;
+  border-radius: 50px;
+}
+
+.post {
+  border: 1px solid black;
+}

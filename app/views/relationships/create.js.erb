@@ -1,0 +1,4 @@
+// allows user to follow and unfollow without a page refresh
+// updates follow form with unfollow partial after successful following and updates followers count
+$("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
+$("#followers").html('<%= @user.followers.count %>');

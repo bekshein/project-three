@@ -1,0 +1,9 @@
+<li id="post-<%= post.id %>">
+  <span class="user"><%= link_to post.user.username, post.user %></span>
+  <span class="content"><%= post.content %></span>
+  <span>
+    <% if current_user?(post.user) %>
+        <%= link_to "delete", post, method: :delete %>
+    <% end %>
+  </span>
+</li>
