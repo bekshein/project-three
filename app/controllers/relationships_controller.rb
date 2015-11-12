@@ -1,23 +1,32 @@
 class RelationshipsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
-    @user = User.find(params[:followed_id])
-    current_user.follow(user)
-    # response to ajax requests, rails will call a .js.erb file wtih same name as the action
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
-    end
+    @relationship = Relationship.new(relationship_params)
+
+    @relationship.save
+
+      respond_to do |format|
+        format.json  { render :json => @relationship }
+      end
+
   end
 
   def destroy
+    # @relationship = Relationship.where(follower_id:)
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow(user)
-    # response to ajax requests, rails will call a .js.erb file wtih same name as the action
+
     respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
+      format.json  { render :json => @relationship }
     end
   end
+
+  private
+
+  def relationship_params
+		params.require(:relationship)
+			.permit(:follower_id, :followed_id)
+	end
 
 end
