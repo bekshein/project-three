@@ -119,7 +119,6 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
 
 
     this.makeCall = function() {
-      console.log(this);
       var ctrlObj = this;
       var endpoint = 'http://api.soundcloud.com/tracks?q=';
       endpoint += this.searchString + "&client_id=" + this.client_id;

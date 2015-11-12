@@ -8,6 +8,15 @@
   </ul>
 </nav>
 
+<div class="search">
+      <button ng-click="pctrl.makeCall()">Search</button>
+      <input
+        type="text"
+        placeholder="search for a track"
+        ng-model="ctrl.searchString"/>
+</div>
+
+
 <form class="new-post" action="/posts" method="post">
   <input type="hidden" name="authenticity_token"
     value="{{pctrl.aut}}">
