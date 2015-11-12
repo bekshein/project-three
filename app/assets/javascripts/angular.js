@@ -18,6 +18,7 @@ app.controller('HeaderController', ['$http', '$scope', function($http, $scope) 
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
   this.aut = authenticity_token;
+
   $http.get('/session').success(function(data){
     _this.current_user = data.current_user;
     console.log(_this.current_user)
@@ -31,61 +32,77 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
   var _this = this;
   this.aut = authenticity_token;
 
-  this.getUserPosts = function () {
-    $http.get('/users/' + $scope.current_user.id).success(function(data){
-      _this.userposts = data.posts
-      _this.current_user = data.current_user;
-      console.log(data);
-    })
-  }
-
-  this.getUser = function () {
-    $http.get('/users/' + $routeParams.id).success(function(data){
-      _this.founduser = data;
-      console.log(data);
-    })
-  }
-
-  this.updateUser = function(user){
-    $http.patch('/users/' + $scope.current_user.id + '/edit').success(function(data){
-      _this.current_user = data.user;
+  //get users data and add it to the controller
+  this.getUsers = function(){
+    $http.get('/users').success(function(data){
+     _this.users = data.users;
     });
-  };
+  } // end of getUsers function
 
-  this.destroyUser = function(user){
-    $http.delete('/users/' + user.id).success(function(data) {
-
+  this.getUserPosts = function(){
+    // get posts for current user
+    $http.get('/users/' + $scope.$parent.current_user.id).success(function(data){
+      _this.userposts = data.posts;
+      console.log(data);
     })
-  }
+  } // end of getUserPosts function
 
   this.getFollowers = function(){
-    $http.get('/users/' + $scope.current_user.id + '/followers').success(function(data){
+    $http.get('/users/' + $scope.$parent.current_user.id + '/followers').success(function(data){
+      console.log("!!!!!!!!");
+      console.log($scope.$parent.current_user.id);
+      console.log(data);
       _this.followers = data.followers.users;
     });
   } // end of getFollowers function
 
   this.getFollowing = function(){
-    $http.get('/users/' + $scope.current_user.id + '/following').success(function(data){
+    $http.get('/users/' + $scope.$parent.current_user.id + '/following').success(function(data){
       _this.following = data.following.users;
     });
   } // end of getFollowing function
+
+  this.getOtherUser = function(){
+    $http.get('/users/' + $routeParams.id).success(function(data){
+      _this.founduser = data;
+      _this.founduserposts = data.posts;
+      console.log(data);
+    })
+  } // end of getOtherUser function
+
+  this.getOtherFollowers = function(){
+    $http.get('/users/' + $routeParams.id + '/followers').success(function(data){
+      _this.ofollowers = data.followers.users;
+    });
+  } // end of getOtherFollowers function
+
+  this.getOtherFollowing = function(){
+    $http.get('/users/' + $routeParams.id + '/following').success(function(data){
+      _this.ofollowing = data.following.users;
+    });
+  } // end of getOtherFollowing function
 
   this.createFollow = function(){
     $http.post('/relationships').then(function(response) {
 
     })
   }
+
   this.destroyFollow = function(other_user){
-    $http.delete('/relationships/' + other_user.id).then(function(response) {
+    $http.delete('/relationships/' + $routeParams.id).then(function(response) {
 
     })
   }
 
+  this.getUsers();
   this.getUserPosts();
-  this.getUser();
   this.getFollowers();
   this.getFollowing();
-  this.makePost();
+
+  this.getOtherUser();
+  this.getOtherFollowers();
+  this.getOtherFollowing();
+
 }]); // end of UserController
 
 app.controller('PostsController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
@@ -94,12 +111,11 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
   var _this = this;
   this.aut = authenticity_token;
 
-  this.VIBE_TYPES  = ['sad', 'cool', 'chill', 'happy']
+  this.VIBE_TYPES  = ['sad', 'cool', 'chill', 'happy'];
   this.newPostVibe = 'sad';
 
   //get posts data and add it to the controller
   this.getPosts = function(){
-    // get posts for current user
     $http.get('/posts').success(function(data){
      _this.posts = data.posts;
      _this.current_user = data.current_user;
@@ -107,12 +123,28 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     });
   } // end of getPosts function
 
-  this.getUserPosts = function () {
-    $http.get('/users/' + $scope.current_user.id).success(function(data){
-      _this.userposts = data.posts
-      console.log(data);
-    })
+  this.createPost = function(){
+    _this.current_user_posts.push({
+      title: this.newPostTitle,
+      source: this.newPostSource,
+      vibe: this.newPostVibe,
+    });
+    // make a post to /posts
+    $http.post('/posts', {
+      authenticity_token: authenticity_token,
+      // values from form
+      post: {
+        song_title: this.newPostSongTitle,
+        artist_name: this.newPostArtistName,
+        vibe: this.newPostVibe,
+      }
+    }).success(function(data){
+      _this.current_user_posts.pop();
+      _this.current_user_posts.push(data.post);
+      _this.getPosts();
+    });
   }
+
 
     this.tracks = [];
     this.searchString = "";
@@ -158,7 +190,7 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     };
 
   this.getPosts()
-  this.getUserPosts();
+
 }]); // end of PostsController
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
@@ -173,6 +205,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'angular_templates/signup.html',
        controller: 'HeaderController',
        controllerAs: 'ctrl'
+     }).
+     when('/application/users', {
+       templateUrl: 'angular_templates/users.html',
+       controller: 'UserController',
+       controllerAs: 'userCtrl'
      }).
      when('/users/:id', {
        templateUrl: 'angular_templates/show.html',
