@@ -98,7 +98,6 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
   this.getUserPosts();
   this.getFollowers();
   this.getFollowing();
-
   this.getOtherUser();
   this.getOtherFollowers();
   this.getOtherFollowing();
