@@ -1,4 +1,3 @@
-
 <nav>
   <ul>
     <li><a href="/application/feed">V-BOARD</a></li>
@@ -30,10 +29,11 @@
 
 
 <form ng-submit="pctrl.createPost()">
-  <input type="text" id="track-input"  ng-model="pctrl.newPostTitle" value="pctrl.title"></br>
-  <input id="source-input" ng-model="pctrl.newPostSource" value="pctrl.permalink" hidden></br>
-
-  <select ng-model="pctrl.newPostVibe">
+  <input type="hidden" name="authenticity_token"
+    value="{{pctrl.aut}}">
+  <input id="track-input" type="text" name="post[title]" placeholder= "track"></br>
+  <input id="source-input" type="text" name="post[source]" hidden></br>
+  <select name="post[vibe]">
     <option value="sad">Sad</option>
     <option value="cool">Cool</option>
     <option value="happy">Happy</option>
@@ -43,7 +43,7 @@
   <input type="submit" value="submit new post">
 </form>
 
-<div class="post" ng-repeat="post in userCtrl.founduserposts">
+<div class="post" ng-repeat="post in pctrl.posts">
   <p class="vibe">{{post.vibe}}</p>
   <p>{{post.title}}</p>
 </div>
