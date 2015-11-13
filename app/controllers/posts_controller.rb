@@ -17,9 +17,12 @@ class PostsController < ApplicationController
 		@post = current_user.posts.new(post_params)
 
 		if @post.save
+			print "saved"
 			flash[:message] = "Post created!"
 
 		else
+			print "failed"
+			print @post.errors.full_messages.to_sentence
 			flash[:message] = @post.errors.full_messages.to_sentence
 		end
 	end
@@ -31,7 +34,7 @@ class PostsController < ApplicationController
 		flash[:message] = "Post has been deleted"
 	end
 
-	private
+private
 
 	def post_params
 		params.require(:post)
