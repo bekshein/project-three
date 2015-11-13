@@ -138,24 +138,24 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
   this.createPost = function(){
     // _this.current_user_posts.push({
     //   title: this.newPostTitle,
-    //   source: this.newPostSource,
+    //   source: this.newPosztSource,
     //   vibe: this.newPostVibe,
     // });
     // make a post to /posts
-    console.log("This is weird " + $scope)
-    $http.post('/posts', {
-      authenticity_token: authenticity_token,
-      // values from form
-      post: {
-        title: this.newPostTitle,
-        source: this.newPostSource,
-        vibe: this.newPostVibe,
-      }
-    }).success(function(data){
-      // _this.current_user_posts.pop();
-
-      _this.getPosts();
-    });
+    console.log(_this)
+    // $http.post('/posts', {
+    //   authenticity_token: authenticity_token,
+    //   // values from form
+    //   post: {
+    //     title: this.newPostTitle,
+    //     source: this.newPostSource,
+    //     vibe: this.newPostVibe,
+    //   }
+    // }).success(function(data){
+    //   // _this.current_user_posts.pop();
+    //   console.log($scope.$parent.current_user.newPostTitle)
+    //   _this.getPosts();
+    // });
   }
 
 
@@ -231,7 +231,6 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     if (_this.currentUser.newPassword) {
       userParams.password = _this.currentUser.newPassword;
     };
-
 
     $http.patch('/users/' + _this.current_user.id, {
       user: userParams,
