@@ -134,6 +134,13 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
   } // end of getPosts function
 
   this.createPost = function(){
+    // _this.current_user_posts.push({
+    //   title: this.newPostTitle,
+    //   source: this.newPostSource,
+    //   vibe: this.newPostVibe,
+    // });
+    // make a post to /posts
+    console.log("This is weird " + $scope)
     $http.post('/posts', {
       authenticity_token: authenticity_token,
       // values from form
@@ -143,6 +150,8 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
         vibe: this.newPostVibe,
       }
     }).success(function(data){
+      // _this.current_user_posts.pop();
+
       _this.getPosts();
     });
   }
