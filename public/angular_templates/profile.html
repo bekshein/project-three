@@ -5,6 +5,7 @@
     <li><a href="/application/newpost">Create new post</a></li>
     <li><a href="/application/following">People you follow</a></li>
     <li><a href="/application/followers">Followers</a></li>
+<<<<<<< HEAD
     <li><a href="/application/users">Find Users</a></li>
   </ul>
 </nav>
@@ -22,3 +23,36 @@
 <!-- move stats here -->
 <h3>Following: {{ userCtrl.following.length }}</h3>
 <h3>Followers: {{ userCtrl.followers.length }}</h3>
+=======
+  </ul>
+</nav>
+
+<div ng-app=''>
+
+  <form ng-show="showme" ng-submit="pctrl.updateUser()">
+    Email
+    <input type="text" ng-model="pctrl.currentUser.email"><br/>
+    Username
+    <input type="text" ng-model="pctrl.currentUser.username"><br/>
+    New Password
+    <input type="password" ng-model="pctrl.currentUser.newPassword"><br/>
+    <input ng-click="showme=false" type="submit">
+  </form>
+
+  <a href="" ng-click="showme=true">Edit the form</a>
+</div>
+
+<p class="hide">{{a=1}}</p>
+{{a}}
+
+<ul>
+  <li ng-repeat="post in pctrl.posts">
+    <p>{{post.artist_name}}</p>
+    <p>{{post.song_title}}</p>
+  </li>
+</ul>
+
+<div id="example">
+ hey
+</div>
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116

@@ -1,5 +1,6 @@
 var app = angular.module('VibezApp', ['ngRoute']);
 
+<<<<<<< HEAD
 // Main Controller to access everything
 app.controller('ParentController', ['$http', '$scope',
 function ($http, $scope) {
@@ -19,6 +20,13 @@ app.controller('HeaderController', ['$http', '$scope', function($http, $scope) 
   var _this = this;
   this.aut = authenticity_token;
 
+=======
+app.controller('HeaderController', ['$http', function($http) {
+    //get authenticity_token from DOM (rails injects it on load)
+    var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var _this = this;
+  this.aut = authenticity_token;
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
   $http.get('/session').success(function(data){
     _this.current_user = data.current_user;
     console.log(_this.current_user)
@@ -26,12 +34,18 @@ app.controller('HeaderController', ['$http', '$scope', function($http, $scope) 
   })
 }]);
 
+<<<<<<< HEAD
 app.controller('UserController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
   // get authenticity_token from DOM (rails injects it on load)
+=======
+app.controller('PostsController', ['$http', function($http){
+  //get authenticity_token from DOM (rails injects it on load)
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
   this.aut = authenticity_token;
 
+<<<<<<< HEAD
   //get users data and add it to the controller
   this.getUsers = function(){
     $http.get('/users').success(function(data){
@@ -191,6 +205,55 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
 
   this.getPosts()
 
+=======
+  this.VIBE_TYPES  = ['sad', 'cool', 'chill', 'happy']
+  this.newPostVibe = 'sad';
+
+  $http.get('/session').success(function(data){
+    console.log("SESSION BACK:", data.current_user);
+    _this.current_user = data.current_user;
+
+    _this.currentUser = {
+      email: data.current_user.email,
+      username: data.current_user.username,
+      password: data.current_user.password
+    };
+
+    console.log(_this.current_user)
+    console.log("this is AUTHENTICITY TOKEN" + authenticity_token)
+  })
+
+  //get posts data and add it to the controller
+  this.getPosts = function(){
+    // get posts for current user
+    $http.get('/posts').success(function(data){
+     _this.posts = data.posts;
+     console.log(_this.posts)
+    });
+  } // end of getPosts function
+  this.getPosts()
+
+  this.updateUser = function() {
+    console.log(_this.currentUser.newPassword);
+
+    var userParams = {
+      email: _this.currentUser.email,
+      username: _this.currentUser.username
+    };
+
+    if (_this.currentUser.newPassword) {
+      userParams.password = _this.currentUser.newPassword;
+    };
+
+
+    $http.patch('/users/' + _this.current_user.id, {
+      user: userParams,
+      authenticity_token: _this.aut
+    }).success(function (result) {
+      console.log(result);
+    })
+  }
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 }]); // end of PostsController
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
@@ -206,6 +269,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        controller: 'HeaderController',
        controllerAs: 'ctrl'
      }).
+<<<<<<< HEAD
      when('/application/users', {
        templateUrl: 'angular_templates/users.html',
        controller: 'UserController',
@@ -221,6 +285,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        controller: 'PostsController',
        controllerAs: 'pctrl'
      }).
+=======
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
      when('/application/feed', {
        templateUrl: 'angular_templates/vboard.html',
        controller: 'PostsController',
@@ -228,8 +294,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
      }).
      when('/application/profile', {
        templateUrl: 'angular_templates/profile.html',
+<<<<<<< HEAD
        controller: 'UserController',
        controllerAs: 'userCtrl'
+=======
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
      }).
      when('/application/newpost', {
        templateUrl: 'angular_templates/new.html',
@@ -238,6 +309,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
      }).
      when('/application/following', {
        templateUrl: 'angular_templates/following.html',
+<<<<<<< HEAD
        controller: 'UserController',
        controllerAs: 'userCtrl'
      }).
@@ -245,5 +317,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
        templateUrl: 'angular_templates/followers.html',
        controller: 'UserController',
        controllerAs: 'userCtrl'
+=======
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
+     }).
+     when('/application/followers', {
+       templateUrl: 'angular_templates/followers.html',
+       controller: 'PostsController',
+       controllerAs: 'pctrl'
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
      });
 }]);

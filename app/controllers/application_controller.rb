@@ -28,10 +28,13 @@ class ApplicationController < ActionController::Base
     render '/feed', layout: 'angular'
   end
 
+<<<<<<< HEAD
   def users
     render '/feed', layout: 'angular'
   end
 
+=======
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
   private
 
   def current_user

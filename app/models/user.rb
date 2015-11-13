@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
 
-
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
@@ -41,5 +40,6 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
+
 
 end

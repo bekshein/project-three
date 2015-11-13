@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 <<<<<<< HEAD
+<<<<<<< HEAD
   # prevents unauthorized access unless logged in, commenting out until done with testing
   # before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
   # before_action :correct_user, only: [:edit, :update]
@@ -12,6 +13,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
   end
+=======
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 
   def create
     @user = User.new(user_params)
@@ -26,12 +29,9 @@ class UsersController < ApplicationController
 
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
   def update
     @user = User.find(params[:id])
+<<<<<<< HEAD
 
 
     if @user.update(user_params)
@@ -61,6 +61,17 @@ class UsersController < ApplicationController
     @users = @user.followers
     render 'followers'
   end
+=======
+
+    if @user && @user.update(user_params)
+      render json: { success: true }
+    else
+      render json: { success: false }
+    end
+  end
+
+  private
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 
 private
 

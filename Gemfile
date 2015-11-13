@@ -26,11 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+<<<<<<< HEAD
 
 # Use Faker to create sample users
 gem 'faker', '~> 1.5.0'
 
 
+=======
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 # Use Unicorn as the app server
 # gem 'unicorn'
 

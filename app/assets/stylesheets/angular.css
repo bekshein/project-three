@@ -32,7 +32,11 @@ header {
 }
 
 nav ul {
+<<<<<<< HEAD
   margin: 5% auto 3% auto;
+=======
+  margin: 3% auto 3% auto;
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
   font-size: 0.75em;
   font-style: italic;
   text-align: center;
@@ -89,6 +93,13 @@ nav a:active {
 
 /* titles */
 
+<<<<<<< HEAD
+=======
+h3 {
+  margin: 3%;
+}
+
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 h4 {
   margin: 3%;
 }
@@ -97,6 +108,7 @@ h4 {
   margin: 2%;
 }
 
+<<<<<<< HEAD
 /* your profile board */
 
 .board {
@@ -121,4 +133,14 @@ h4 {
 
 .post {
   border: 1px solid black;
+=======
+/* pseudo shapes */
+
+#example:before {
+  content: "#"
+}
+
+#example:after {
+  content: "."
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 }

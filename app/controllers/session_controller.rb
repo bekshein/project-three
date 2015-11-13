@@ -11,6 +11,7 @@ class SessionController < ApplicationController
       session[:session_token] = token
       user.update(session_token: token)
 
+<<<<<<< HEAD
 
     flash[:message] = "Thanks for logging in"
     redirect_to application_feed_path
@@ -19,7 +20,18 @@ class SessionController < ApplicationController
     redirect_to root_path
   end
 
+=======
+      flash[:message] = "Thanks for logging in"
+      redirect_to application_feed_path
+    else
+      flash[:message] = "Email / Password combo does not exist"
+      redirect_to root_path
+    end
+  end
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 
+  def active_user
+    @active_user = current_user
   end
 
   def destroy

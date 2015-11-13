@@ -5,7 +5,10 @@
     <li><a href="/application/newpost">Create new post</a></li>
     <li><a href="/application/following">People you follow</a></li>
     <li><a href="/application/followers">Followers</a></li>
+<<<<<<< HEAD
     <li><a href="/application/users">Find Users</a></li>
+=======
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
   </ul>
 </nav>
 
@@ -18,8 +21,12 @@
     </select>
 
 <ul ng-repeat="post in pctrl.posts | filter:search:strict ">
+<<<<<<< HEAD
     <hr>
       <li><label> AUTHOR: {{post.author_id}}</label></li>
       <li><label> SONG TITLE: {{post.song_title}}</label></li>
       <li><label> ARTIST NAME: {{post.artist_name}}</label></li>
+=======
+      <li>{{post.song_title}}</li>
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 </ul>

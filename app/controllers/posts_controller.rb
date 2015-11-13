@@ -4,17 +4,40 @@ class PostsController < ApplicationController
 	# before_action :correct_user, only: :destroy
 
 	def index
-		
 		@posts = Post.all
 		@users = User.all
 	end
 
 	def new
 		@post = Post.new
+<<<<<<< HEAD
 	end
 
 	def create
 		@post = current_user.posts.new(post_params)
+=======
+		@moods = ['happy', 'good', 'euphoric', 'ecstasy', 'so so']
+		@users = User.all.map do |x|
+			[ x.username, x.id ]
+		end
+
+		render '/newpost', layout: 'angular'
+	end
+
+	def create
+		@post = Post.new(post_params)
+	  @post.save
+	  redirect_to application_profile_path
+	end
+
+	def edit
+		@post = Post.find(params[:id])
+		@moods = ['happy', 'good', 'euphoric', 'ecstasy', 'so so']
+		@users = User.all.map do |x|
+			[ x.username, x.id ]
+		end
+	end
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 
 		if @post.save
 			flash[:message] = "Post created!"
@@ -43,7 +66,10 @@ class PostsController < ApplicationController
 		@post = current_user.posts.find_by(id: params[:id])
 		redirect_to root_url if @post.nil?
 	end
+<<<<<<< HEAD
 
 =======
 >>>>>>> 85c4767d27983b53454e55b61ed13f0c7cb4a831
+=======
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
 end

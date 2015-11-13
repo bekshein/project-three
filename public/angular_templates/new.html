@@ -5,6 +5,7 @@
     <li class="active-nav">Create new post</li>
     <li><a href="/application/following">People you follow</a></li>
     <li><a href="/application/followers">Followers</a></li>
+<<<<<<< HEAD
     <li><a href="/application/users">Find Users</a></li>
   </ul>
 </nav>
@@ -33,6 +34,16 @@
     value="{{pctrl.aut}}">
   <input id="track-input" type="text" name="post[track]" placeholder= "track"></br>
   <input id="source-input" type="text" name="post[source]" hidden></br>
+=======
+  </ul>
+</nav>
+
+<form class="new-post" action="/posts" method="post">
+  <input type="hidden" name="authenticity_token"
+    value="{{pctrl.aut}}">
+  <input type="text" name="post[song_title]" placeholder= "song title"></br>
+  <input type="text" name="post[artist_name]" placeholder="artist name"></br>
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
   <select name="post[vibe]">
     <option value="sad">Sad</option>
     <option value="cool">Cool</option>
@@ -40,5 +51,11 @@
     <option value="angry">Angry</option>
   </select>
   </br>
+<<<<<<< HEAD
+=======
+  <select name="post[like]">
+    <option value="1">1</option>
+  </select></br>
+>>>>>>> 61d50e90adbc5d477f3d25d251b7500caf5fa116
   <input type="submit" value="submit new post">
 </form>
