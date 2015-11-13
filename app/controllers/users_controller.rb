@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # prevents unauthorized access unless logged in, commenting out until done with testing
   # before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
   # before_action :correct_user, only: [:edit, :update]
+  before_action :require_current_user
 
   def index
     @users = User.all
@@ -23,10 +24,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
 
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -61,6 +58,7 @@ class UsersController < ApplicationController
   end
 
 private
+
 
   def user_params
     return params.require(:user).permit(:username, :email, :password)

@@ -6,10 +6,11 @@ class SessionController < ApplicationController
     if user && user.authenticate(user_params[:password])
       # session[:current_user_id] = user.id
 
-    token = SecureRandom.urlsafe_base64
+      token = SecureRandom.urlsafe_base64
 
-    session[:session_token] = token
-    user.update(session_token: token)
+      session[:session_token] = token
+      user.update(session_token: token)
+
 
     flash[:message] = "Thanks for logging in"
     redirect_to application_feed_path
@@ -17,8 +18,11 @@ class SessionController < ApplicationController
     flash[:message] = "Email / Password combo does not exist"
     redirect_to root_path
   end
+end
 
 
+  def active_user
+    @active_user = current_user
   end
 
   def destroy

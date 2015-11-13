@@ -8,4 +8,5 @@ json.posts(@posts) do |post|
   json.vibe        post.vibe
   json.author_id   post.user_id
 
+
 end

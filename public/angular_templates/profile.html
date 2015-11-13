@@ -22,3 +22,19 @@
 <!-- move stats here -->
 <h3>Following: {{ userCtrl.following.length }}</h3>
 <h3>Followers: {{ userCtrl.followers.length }}</h3>
+
+
+<div ng-app=''>
+
+  <form ng-show="showme" ng-submit="pctrl.updateUser()">
+    Email
+    <input type="text" ng-model="pctrl.currentUser.email"><br/>
+    Username
+    <input type="text" ng-model="pctrl.currentUser.username"><br/>
+    New Password
+    <input type="password" ng-model="pctrl.currentUser.newPassword"><br/>
+    <input ng-click="showme=false" type="submit">
+  </form>
+
+  <a href="" ng-click="showme=true">Edit the form</a>
+</div>

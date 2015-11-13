@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'application/following'
   # gets to following
 
+
   get 'application/users'
   # gets to users
 
@@ -36,6 +37,12 @@ Rails.application.routes.draw do
 
   # session stuff
   get '/session' => 'session#current_user', defaults: { format: :json }
+
+  resources :posts, only: [:index, :create, :new], defaults: { format: :json}
+  resources :users, defaults: {format: :json}
+
+  # session stuff
+  get '/session' => 'session#active_user', defaults: { format: :json }
   post '/session' => 'session#create'
   delete '/session' => 'session#destroy'
 

@@ -10,15 +10,19 @@ class PostsController < ApplicationController
 
 	def new
 		@post = Post.new
+
 	end
 
 	def create
 		@post = current_user.posts.new(post_params)
 
 		if @post.save
+			print "saved"
 			flash[:message] = "Post created!"
 
 		else
+			print "failed"
+			print @post.errors.full_messages.to_sentence
 			flash[:message] = @post.errors.full_messages.to_sentence
 		end
 	end
@@ -30,16 +34,16 @@ class PostsController < ApplicationController
 		flash[:message] = "Post has been deleted"
 	end
 
-	private
+private
 
 	def post_params
 		params.require(:post)
 			.permit(:title, :source, :vibe, :like, :user_id)
 	end
 
+
 	def correct_user
 		@post = current_user.posts.find_by(id: params[:id])
 		redirect_to root_url if @post.nil?
 	end
-
 end
