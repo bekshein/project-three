@@ -118,13 +118,25 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
 }]); // end of UserController
 
 app.controller('PostsController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
+<<<<<<< HEAD
+  var controller = this
   // get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+=======
+>>>>>>> c51ca7c6791339c8395c0168138b35819dbcacd8
   var _this = this;
-  this.aut = authenticity_token;
-
   this.VIBE_TYPES  = ['sad', 'cool', 'chill', 'happy'];
+<<<<<<< HEAD
   this.newPostVibe = 'sad';
+  this.permalink = "";
+  this.title = "";
+=======
+  // get authenticity_token from DOM (rails injects it on load)
+  this.authenticity_token = $('meta[name="csrf-token"]').attr('content');
+  this.newPostTitle = $('#track-input');
+  this.newPostSource = $('#source-input');
+  this.newPostVibe = $('select');
+>>>>>>> c51ca7c6791339c8395c0168138b35819dbcacd8
 
   //get posts data and add it to the controller
   this.getPosts = function(){
@@ -142,26 +154,37 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     //   vibe: this.newPostVibe,
     // });
     // make a post to /posts
-    console.log(_this)
-    // $http.post('/posts', {
-    //   authenticity_token: authenticity_token,
-    //   // values from form
-    //   post: {
-    //     title: this.newPostTitle,
-    //     source: this.newPostSource,
-    //     vibe: this.newPostVibe,
-    //   }
-    // }).success(function(data){
-    //   // _this.current_user_posts.pop();
-    //   console.log($scope.$parent.current_user.newPostTitle)
-    //   _this.getPosts();
-    // });
+    $http.post('/posts', {
+      authenticity_token: this.authenticity_token,
+      // values from form
+      post: {
+<<<<<<< HEAD
+        title: controller.newPostTitle,
+        source: controller.newPostSource,
+        vibe: controller.newPostVibe
+=======
+        title: this.newPostTitle.val(),
+        source: this.newPostSource.val(),
+        vibe: this.newPostVibe.val()
+>>>>>>> c51ca7c6791339c8395c0168138b35819dbcacd8
+      }
+    }).success(function(data){
+      console.log("THIS IS THAT DATTTAA", data)
+      // _this.current_user_posts.pop();
+<<<<<<< HEAD
+      // console.log($scope.$parent.current_user.newPostTitle)
+=======
+>>>>>>> c51ca7c6791339c8395c0168138b35819dbcacd8
+      _this.getPosts();
+    });
   }
 
 
     this.tracks = [];
     this.searchString = "";
     this.client_id = 'b5bc5954389edc0ac2a8c023851af762';
+    this.permalink = "";
+    this.title = "";
 
 
     this.makeCall = function() {
@@ -193,13 +216,13 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     this.chooseSong = function() {
       var el = angular.element(event.target)
       var title = el.data('title');
-      var permalink_url = el.data('url')
+      var permalink_url = el.data('url');
       var trackInput = angular.element('#track-input');
       trackInput.attr('value', title);
       var sourceInput = angular.element('#source-input');
       sourceInput.attr('value', permalink_url);
       angular.element('.search-remove').remove();
-      console.log(title)
+
     };
 
   this.getPosts()
