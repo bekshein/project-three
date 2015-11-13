@@ -1,3 +1,4 @@
+
 <nav>
   <ul>
     <li><a href="/application/feed">V-BOARD</a></li>
@@ -29,8 +30,8 @@
 
 
 <form ng-submit="pctrl.createPost()">
-  <input id="track-input"  ng-model="pctrl.newPostTitle"></br>
-  <input id="source-input" ng-model="pctrl.newPostSource" hidden></br>
+  <input type="text" id="track-input"  ng-model="pctrl.newPostTitle" value="pctrl.title"></br>
+  <input id="source-input" ng-model="pctrl.newPostSource" value="pctrl.permalink" hidden></br>
 
   <select ng-model="pctrl.newPostVibe">
     <option value="sad">Sad</option>

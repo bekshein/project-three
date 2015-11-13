@@ -118,6 +118,7 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
 }]); // end of UserController
 
 app.controller('PostsController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
+  var controller = this
   // get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
@@ -125,6 +126,8 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
 
   this.VIBE_TYPES  = ['sad', 'cool', 'chill', 'happy'];
   this.newPostVibe = 'sad';
+  this.permalink = "";
+  this.title = "";
 
   //get posts data and add it to the controller
   this.getPosts = function(){
@@ -142,26 +145,28 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     //   vibe: this.newPostVibe,
     // });
     // make a post to /posts
-    console.log(_this)
-    // $http.post('/posts', {
-    //   authenticity_token: authenticity_token,
-    //   // values from form
-    //   post: {
-    //     title: this.newPostTitle,
-    //     source: this.newPostSource,
-    //     vibe: this.newPostVibe,
-    //   }
-    // }).success(function(data){
-    //   // _this.current_user_posts.pop();
-    //   console.log($scope.$parent.current_user.newPostTitle)
-    //   _this.getPosts();
-    // });
+    $http.post('/posts', {
+      authenticity_token: authenticity_token,
+      // values from form
+      post: {
+        title: controller.newPostTitle,
+        source: controller.newPostSource,
+        vibe: controller.newPostVibe
+      }
+    }).success(function(data){
+      console.log("THIS IS THAT DATTTAA", data)
+      // _this.current_user_posts.pop();
+      // console.log($scope.$parent.current_user.newPostTitle)
+      _this.getPosts();
+    });
   }
 
 
     this.tracks = [];
     this.searchString = "";
     this.client_id = 'b5bc5954389edc0ac2a8c023851af762';
+    this.permalink = "";
+    this.title = "";
 
 
     this.makeCall = function() {
@@ -193,13 +198,13 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     this.chooseSong = function() {
       var el = angular.element(event.target)
       var title = el.data('title');
-      var permalink_url = el.data('url')
+      var permalink_url = el.data('url');
       var trackInput = angular.element('#track-input');
       trackInput.attr('value', title);
       var sourceInput = angular.element('#source-input');
       sourceInput.attr('value', permalink_url);
       angular.element('.search-remove').remove();
-      console.log(title)
+
     };
 
   this.getPosts()
