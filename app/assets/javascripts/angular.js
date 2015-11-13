@@ -83,8 +83,18 @@ app.controller('UserController', ['$http', '$scope', '$routeParams', function($h
   } // end of getOtherFollowing function
 
   this.createFollow = function(){
-    $http.post('/relationships').then(function(response) {
-
+    console.log($scope.userCtrl.founduser)
+    console.log($scope.$parent.current_user)
+    $http.post('/relationships', {
+      authenticity_token: authenticity_token,
+      relationship: {
+        followed_id: $scope.userCtrl.founduser.id,
+        follower_id: $scope.$parent.current_user.id
+      }
+    }).success(function(data) {
+      console.log(data);
+    }).error(function(err){
+      console.log(err);
     })
   }
 
@@ -124,12 +134,13 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
   } // end of getPosts function
 
   this.createPost = function(){
-    _this.current_user_posts.push({
-      title: this.newPostTitle,
-      source: this.newPostSource,
-      vibe: this.newPostVibe,
-    });
+    // _this.current_user_posts.push({
+    //   title: this.newPostTitle,
+    //   source: this.newPostSource,
+    //   vibe: this.newPostVibe,
+    // });
     // make a post to /posts
+    console.log("This is weird " + $scope)
     $http.post('/posts', {
       authenticity_token: authenticity_token,
       // values from form
@@ -139,8 +150,8 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
         vibe: this.newPostVibe,
       }
     }).success(function(data){
-      _this.current_user_posts.pop();
-      _this.current_user_posts.push(data.post);
+      // _this.current_user_posts.pop();
+
       _this.getPosts();
     });
   }
@@ -185,7 +196,7 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
       trackInput.attr('value', title);
       var sourceInput = angular.element('#source-input');
       sourceInput.attr('value', permalink_url);
-      angular.element('ul').remove();
+      angular.element('.search-remove').remove();
       console.log(title)
     };
 
