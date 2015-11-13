@@ -26,11 +26,13 @@ app.controller('HeaderController', ['$http', '$scope', function($http, $scope) 
   })
 }]);
 
+
 app.controller('UserController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
   // get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var _this = this;
   this.aut = authenticity_token;
+
 
   //get users data and add it to the controller
   this.getUsers = function(){
@@ -201,6 +203,43 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     };
 
   this.getPosts()
+
+
+  $http.get('/session').success(function(data){
+    console.log("SESSION BACK:", data.current_user);
+    _this.current_user = data.current_user;
+
+    _this.currentUser = {
+      email: data.current_user.email,
+      username: data.current_user.username,
+      password: data.current_user.password
+    };
+
+    console.log(_this.current_user)
+    console.log("this is AUTHENTICITY TOKEN" + authenticity_token)
+  })
+
+
+  this.updateUser = function() {
+    console.log(_this.currentUser.newPassword);
+
+    var userParams = {
+      email: _this.currentUser.email,
+      username: _this.currentUser.username
+    };
+
+    if (_this.currentUser.newPassword) {
+      userParams.password = _this.currentUser.newPassword;
+    };
+
+
+    $http.patch('/users/' + _this.current_user.id, {
+      user: userParams,
+      authenticity_token: _this.aut
+    }).success(function (result) {
+      console.log(result);
+    })
+  }
 
 }]); // end of PostsController
 

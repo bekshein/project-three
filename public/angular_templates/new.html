@@ -31,9 +31,10 @@
 <form ng-submit="pctrl.createPost()">
   <input type="hidden" name="authenticity_token"
     value="{{pctrl.aut}}">
-  <input id="track-input" type="text" name="post[title]" placeholder= "track"></br>
-  <input id="source-input" type="text" name="post[source]" hidden></br>
-  <select name="post[vibe]">
+  <input id="track-input" type="text"  ng-model="pctrl.newPostTitle" placeholder= "track"></br>
+  <input id="source-input" type="text" ng-model="pctrl.newPostSource" hidden></br>
+
+  <select ng-model="pctrl.newPostVibe">
     <option value="sad">Sad</option>
     <option value="cool">Cool</option>
     <option value="happy">Happy</option>

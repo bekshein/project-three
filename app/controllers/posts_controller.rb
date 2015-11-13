@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
 	def new
 		@post = Post.new
+
 	end
 
 	def create
@@ -37,9 +38,9 @@ class PostsController < ApplicationController
 			.permit(:title, :source, :vibe, :like, :user_id)
 	end
 
+
 	def correct_user
 		@post = current_user.posts.find_by(id: params[:id])
 		redirect_to root_url if @post.nil?
 	end
-
 end

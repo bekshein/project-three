@@ -18,8 +18,7 @@
     </select>
 
 <ul ng-repeat="post in pctrl.posts | filter:search:strict ">
-    <hr>
-      <li><label> AUTHOR: {{post.author_id}}</label></li>
-      <li><label> SONG TITLE: {{post.song_title}}</label></li>
-      <li><label> ARTIST NAME: {{post.artist_name}}</label></li>
+
+      <li>{{post.song_title}}</li>
+
 </ul>
