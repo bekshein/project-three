@@ -163,8 +163,7 @@ app.controller('PostsController', ['$http', '$scope', '$routeParams', function($
     this.makeCall = function() {
       console.log(this.searchString)
       var ctrlObj = this;
-      // added 's' to http for heroku fix
-      var endpoint = 'https://api.soundcloud.com/tracks?q=';
+      var endpoint = 'http://api.soundcloud.com/tracks?q=';
       endpoint += this.searchString + "&client_id=" + this.client_id;
       var promise = $http.get(endpoint);
       promise.success(function(data) {
